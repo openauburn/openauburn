@@ -1,4 +1,4 @@
-name: openauburn.org
+name: openauburn-site-cloud-run
 
 on:
   push:
@@ -7,10 +7,10 @@ on:
       - main
     
 env:
-  PROJECT_ID: ${{ secres.CLOUD_RUN_PROJECT_NAME }}
+  PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
   REGION: us-east1
 
-  REPO_NAME: openauburn.org
+  REPO_NAME: openauburn-site-cloud-run
 
 jobs:
   build-any-deploy:
