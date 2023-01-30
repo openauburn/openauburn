@@ -20,16 +20,11 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
-  IconNotification,
-  IconCode,
-  IconBook,
-  IconChartPie3,
-  IconFingerprint,
-  IconCoin,
   IconChevronDown,
   IconFlame,
   IconPrison,
 } from '@tabler/icons';
+import Link from 'next/link';
 import LightDarkButton from './LightDarkButton';
 import OpenAuburnLogo from './OpenAuburnLogo';
 
@@ -140,20 +135,20 @@ const NavHeader = () => {
             </UnstyledButton>
 
           <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
-            <a href="/" className={classes.link}>
+            <Link href="/" className={classes.link}>
               Home
-            </a>
+            </Link>
 
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
-                <a href="/datasets" className={classes.link}>
+                <Link href="/datasets" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
                       Data
                     </Box>
                     <IconChevronDown size={16} color={theme.fn.primaryColor()} />
                   </Center>
-                </a>
+                </Link>
               </HoverCard.Target>
 
               <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>

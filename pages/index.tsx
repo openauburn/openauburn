@@ -122,7 +122,7 @@ export default function Home() {
   
           <Container p={0} size={600}>
             <Text size="lg" color="dimmed" className={classes.description}>
-            Create, research, and learn using Auburn University's largest public datasets.
+            Create, research, and learn using Auburn University&apos;'s largest public datasets.
             Focus less on getting the data and more on the projects meaningful to you.
             </Text>
           </Container>
@@ -130,7 +130,7 @@ export default function Home() {
           <div className={classes.controls}>
             
             <Button className={classes.control} size="lg" component='a' href='/showcase'>
-              See what's possible
+              See what&apos;'s possible
             </Button>
             <Button className={classes.control} size="lg" variant="default" color="gray" component='a' href='/data'>
               Discover the data
