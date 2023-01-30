@@ -133,7 +133,7 @@ const Footer = ({ data }: FooterLinksProps) => {
               <OpenAuburnLogo includeTitle/>
           </UnstyledButton>
           <Text size="xs" color="dimmed" className={classes.description}>
-          Create, research, and learn using Auburn University&apos;s largest public datasets.
+          Create, research, and learn using Auburn University's largest public datasets.
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>
