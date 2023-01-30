@@ -98,13 +98,13 @@ const mockdata = [
     icon: IconPrison,
     title: 'Crimes',
     description: 'Crime reports on or around Auburn University’s campuses.',
-    link: '/data/Crimes'
+    link: '/datasets/Crimes'
   },
   {
     icon: IconFlame,
     title: 'Fires',
     description: 'Fire reports on or around Auburn University’s campuses.',
-    link: '/data/Fires'
+    link: '/datasets/Fires'
   }
 ];
 
@@ -146,7 +146,7 @@ const NavHeader = () => {
 
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
-                <a href="/data" className={classes.link}>
+                <a href="/datasets" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
                       Data
@@ -159,7 +159,7 @@ const NavHeader = () => {
               <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>
                 <Group position="apart" px="md">
                   <Text weight={500}>Datasets</Text>
-                  <Anchor href="/data" size="xs">
+                  <Anchor href="/datasets" size="xs">
                     View all
                   </Anchor>
                 </Group>
