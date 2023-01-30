@@ -1,5 +1,5 @@
 import { createStyles, Title, Text, Button, Container } from '@mantine/core';
-import {Dots} from './Dots';
+import Dots from './Dots';
 
 
 const useStyles = createStyles((theme) => ({
