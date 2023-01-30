@@ -9,6 +9,7 @@ import {useHotkeys} from '@mantine/hooks';
 
 import NavHeader from '@/components/NavHeader';
 import Footer from '@/components/Footer';
+import Script from 'next/script';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     const { Component, pageProps } = props;
@@ -99,6 +100,15 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                                }
                              ]
                            }/>}>
+                        <Script src={"https://www.googletagmanager.com/gtag/js?id=G-552477Q8JV"} strategy={'afterInteractive'}>
+                          {`
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                          
+                            gtag('config', 'G-552477Q8JV');
+                          `}
+                        </Script>
                         <Component {...pageProps} />
                     </AppShell>
                 </MantineProvider>
