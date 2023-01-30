@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
@@ -21,7 +21,6 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     };
 
     useHotkeys([['mod+J', () => toggleColorScheme()]]);
-
 
     return (
         <>
@@ -105,5 +104,13 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                 </MantineProvider>
             </ColorSchemeProvider>
         </>
-  )
+  );
 }
+
+App.getInitialProps = async (appContext: AppContext) => {
+  const appProps = await NextApp.getInitialProps(appContext);
+  return {
+    ...appProps,
+    colorScheme: getCookie('mantine-color-scheme', appContext.ctx) || 'dark',
+  };
+};
