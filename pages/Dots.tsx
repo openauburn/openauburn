@@ -3,7 +3,7 @@ export interface DotsProps extends React.ComponentPropsWithoutRef<'svg'> {
     radius?: number;
   }
   
-  export function Dots({ size = 250, radius = 10, ...others }: DotsProps) {
+  export default function Dots({ size = 250, radius = 10, ...others }: DotsProps) {
 
     const w = "8"
     const h = "8"
