@@ -100,12 +100,16 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                                }
                              ]
                            }/>}>
-                        <Script id={"google-analytics"} src={"https://www.googletagmanager.com/gtag/js?id=G-552477Q8JV"} strategy={'afterInteractive'}>
+                        <Script
+                          src="https://www.googletagmanager.com/gtag/js?id=G-552477Q8JV"
+                          strategy="afterInteractive"
+                        />
+                        <Script id="google-analytics" strategy="afterInteractive">
                           {`
                             window.dataLayer = window.dataLayer || [];
-                            function gtag(){dataLayer.push(arguments);}
+                            function gtag(){window.dataLayer.push(arguments);}
                             gtag('js', new Date());
-                          
+
                             gtag('config', 'G-552477Q8JV');
                           `}
                         </Script>
