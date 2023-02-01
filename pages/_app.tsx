@@ -4,14 +4,17 @@ import NextApp, { AppProps, AppContext } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider, AppShell } from '@mantine/core';
-import { NotificationsProvider } from '@mantine/notifications';
 import {useHotkeys} from '@mantine/hooks';
-
 import NavHeader from '@/components/NavHeader';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
 
+import { poppinsBold, noto, noto_mono } from '@/lib/CustomFonts';
+
+
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
+
+
     const { Component, pageProps } = props;
     const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
 
@@ -38,9 +41,10 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                 primaryColor: colorScheme === 'dark' ? 'orange' : 'blue',
 
                 primaryShade: 5,
-
+                fontFamily: `${noto.style.fontFamily}`,
+                fontFamilyMonospace: `${noto_mono.style.fontFamily}`,
                 colorScheme: colorScheme,
-                headings: { fontFamily: 'Poppins, sans-serif' },
+                headings: {fontFamily: `${poppinsBold.style.fontFamily}, sans-serif`, fontWeight: `800`}
                 }} withGlobalStyles withNormalizeCSS>
                     <AppShell
                          header={<NavHeader/>}
@@ -100,6 +104,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                                }
                              ]
                            }/>}>
+                        
                         <Script
                           src="https://www.googletagmanager.com/gtag/js?id=G-552477Q8JV"
                           strategy="afterInteractive"

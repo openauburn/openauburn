@@ -7,10 +7,12 @@ export default function Dataset() {
     const router = useRouter()
     const {dataset} = router.query
 
+    const text = `${dataset} | Open Auburn`
+
   return (
     <>
         <Head>
-            <title>{dataset} | OpenAuburn</title>
+            <title>{text}</title>
         </Head>
     </>
   )
