@@ -118,7 +118,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                             gtag('config', 'G-552477Q8JV');
                           `}
                         </Script>
-                        <Script>
+                        <Script id="hotjar">
                           {`
                           (function(h,o,t,j,a,r){
                             h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
