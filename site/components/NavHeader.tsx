@@ -179,7 +179,7 @@ const NavHeader = () => {
                         Explore datasets and gain insights with the open data portal.
                       </Text>
                     </div>
-                    <Button variant="default" component='a' href='/data'>Explore data</Button>
+                    <Button variant="default" component='a' href='/datasets'>Explore data</Button>
                   </Group>
                 </div>
               </HoverCard.Dropdown>
@@ -242,13 +242,13 @@ const NavHeader = () => {
 
           </Group>
 
-          <Group className={classes.hiddenMobile}>
+          {/* <Group className={classes.hiddenMobile}>
             <Group>
               <Button variant="default">Log in</Button>
               <Button>Sign up</Button>
             </Group>
             <LightDarkButton/>
-          </Group>
+          </Group> */}
 
           <Group className={classes.hiddenDesktop}>
             <div>
@@ -293,10 +293,10 @@ const NavHeader = () => {
 
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
-          <Group position="center" grow pb="xl" px="md">
+          {/* <Group position="center" grow pb="xl" px="md">
             <Button variant="default">Log in</Button>
             <Button>Sign up</Button>
-          </Group>
+          </Group> */}
         </ScrollArea>
       </Drawer>
     </Box>
