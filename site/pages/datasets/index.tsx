@@ -1,7 +1,12 @@
-import { Container } from '@mantine/core'
+import { Metadata } from '@/utils/types'
+import { Container, Text, Title } from '@mantine/core'
 import React from 'react'
 
-export default function index() {
+interface DatasetsProps {
+  metadata: Array<Metadata>
+}
+
+export default function index(props: DatasetsProps) {
 
   
   
@@ -9,8 +14,25 @@ export default function index() {
   return (
     <>
       <Container>
-
+        {props.metadata.map((md:Metadata) => (
+          <Text>
+            {md.title}
+          </Text>
+          )
+        )}
       </Container>
     </>
   )
+}
+
+
+export async function getServerSideProps() {
+  // get todo data from API
+  const res = await fetch('http://localhost:3000/api/metadata')
+  const metadata = await res.json()
+
+  // return props
+  return {
+    props: { metadata },
+  }
 }

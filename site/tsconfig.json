@@ -34,8 +34,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
+    ".next/types/**/*.ts",
+    "./typings/**/*.ts"
+, "lib/mongo/conn.js", "lib/mongo/conn.js", "lib/mongo/controller.js"  ],
   "exclude": [
     "node_modules"
   ]
