@@ -184,15 +184,15 @@ const NavHeader = () => {
                 </div>
               </HoverCard.Dropdown>
             </HoverCard>
-            <a href="/showcase" className={classes.link}>
+            <Link href="/showcase" className={classes.link}>
               Showcase
-            </a>
-            <a href="/docs" className={classes.link}>
+            </Link>
+            <Link href="/docs" className={classes.link}>
               Documentation
-            </a>
-            <a href="/about" className={classes.link}>
+            </Link>
+            <Link href="/about" className={classes.link}>
               About
-            </a>
+            </Link>
 
             {/* <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
@@ -242,6 +242,9 @@ const NavHeader = () => {
 
           </Group>
 
+
+          <LightDarkButton/>
+
           {/* <Group className={classes.hiddenMobile}>
             <Group>
               <Button variant="default">Log in</Button>
@@ -272,9 +275,9 @@ const NavHeader = () => {
         <ScrollArea sx={{ height: 'calc(100vh - 60px)' }} mx="-md">
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
-          <a href="#" className={classes.link}>
+          <Link href="#" className={classes.link}>
             Home
-          </a>
+          </Link>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
@@ -284,12 +287,12 @@ const NavHeader = () => {
             </Center>
           </UnstyledButton>
           <Collapse in={linksOpened}>{links}</Collapse>
-          <a href="#" className={classes.link}>
+          <Link href="#" className={classes.link}>
             Learn
-          </a>
-          <a href="#" className={classes.link}>
+          </Link>
+          <Link href="#" className={classes.link}>
             Academy
-          </a>
+          </Link>
 
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
