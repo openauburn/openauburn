@@ -15,7 +15,7 @@ export default function index(props: DatasetsProps) {
     <>
       <Container>
         {props.metadata.map((md:Metadata) => (
-          <Text>
+          <Text key={Math.random() + Date.now()}>
             {md.title}
           </Text>
           )
