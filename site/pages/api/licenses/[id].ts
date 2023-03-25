@@ -20,18 +20,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const { Licenses } = await connect() // connect to database
       res.json(await Licenses.findOne().where({ id: id }).catch(catcher))
     },
-    // RESPONSE PUT REQUESTS
-    PUT: async (req: NextApiRequest, res: NextApiResponse) => {
-      const { Licenses } = await connect() // connect to database
-      res.json(
-        await Licenses.findOneAndUpdate({ id: id }, req.body).catch(catcher)
-      )
-    },
-    // RESPONSE FOR DELETE REQUESTS
-    DELETE: async (req: NextApiRequest, res: NextApiResponse) => {
-      const { Licenses } = await connect() // connect to database
-      res.json(await Licenses.findOneAndRemove({ id: id }).catch(catcher))
-    },
   }
 
   // Check if there is a response for the particular method, if so invoke it, if not response with an error
