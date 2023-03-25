@@ -28,7 +28,7 @@ export default function index(props: DatasetsProps) {
 
 export async function getServerSideProps() {
   // get todo data from API
-  const res = await fetch('http://localhost:3000/api/metadata')
+  const res = await fetch((process.env.PUBLIC_API_URL || 'http://localhost:3000') + "/api/metadata")
   const metadata = await res.json()
 
   // return props
