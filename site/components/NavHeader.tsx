@@ -198,15 +198,13 @@ const NavHeader = () => {
           </Group>
 
 
-          <LightDarkButton/>
-
-          {/* <Group className={classes.hiddenMobile}>
-            <Group>
+          <Group className={classes.hiddenMobile}>
+            {/* <Group>
               <Button variant="default">Log in</Button>
               <Button>Sign up</Button>
-            </Group>
+            </Group> */}
             <LightDarkButton/>
-          </Group> */}
+          </Group>
 
           <Group className={classes.hiddenDesktop}>
             <div>
