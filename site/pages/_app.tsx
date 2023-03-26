@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
-import { MantineProvider, ColorScheme, ColorSchemeProvider, AppShell } from '@mantine/core';
+import { MantineProvider, ColorScheme, ColorSchemeProvider, AppShell, useMantineTheme } from '@mantine/core';
 import {useHotkeys} from '@mantine/hooks';
 import NavHeader from '@/components/NavHeader';
 import Footer from '@/components/Footer';
@@ -14,7 +14,7 @@ import { poppinsBold, noto, noto_mono } from '@/lib/CustomFonts';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
-
+    const theme = useMantineTheme();
     const { Component, pageProps } = props;
     const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
 
@@ -47,6 +47,11 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                 headings: {fontFamily: `${poppinsBold.style.fontFamily}, sans-serif`, fontWeight: `800`}
                 }} withGlobalStyles withNormalizeCSS>
                     <AppShell
+                          styles={{
+                            main: {
+                              background: colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+                            },
+                          }}
                          header={<NavHeader/>}
                          footer={<Footer
                            data = {

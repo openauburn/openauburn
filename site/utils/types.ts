@@ -8,9 +8,11 @@ export interface ResponseFuncs {
   
 export interface Metadata {
     id: Number,
-    title: String,
-    slug: String,
-    description: String,
+    title: string,
+    slug: string,
+    description: string,
+    icon: string,
+    [key: string]: any;
 }
 
 export interface Tag {

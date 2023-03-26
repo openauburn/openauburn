@@ -132,7 +132,7 @@ export default function Home() {
             <Button className={classes.control} size="lg" component='a' href='/showcase'>
               See what's possible
             </Button>
-            <Button className={classes.control} size="lg" variant="default" color="gray" component='a' href='/data'>
+            <Button className={classes.control} size="lg" variant="default" color="gray" component='a' href='/datasets'>
               Discover the data
             </Button>
           </div>

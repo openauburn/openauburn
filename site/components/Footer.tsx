@@ -1,10 +1,10 @@
-import { createStyles, Text, Container, ActionIcon, Group, UnstyledButton } from '@mantine/core';
-import { IconBrandTwitter, IconBrandInstagram, IconBrandLinkedin, IconBrandGithub, IconBrandDiscord} from '@tabler/icons';
+import { createStyles, Text, Container, ActionIcon, Group, UnstyledButton, px } from '@mantine/core';
+import { IconBrandTwitter, IconBrandInstagram, IconBrandLinkedin, IconBrandGithub, IconBrandDiscord} from '@tabler/icons-react';
 import OpenAuburnLogo from './OpenAuburnLogo';
 const useStyles = createStyles((theme) => ({
   footer: {
-    paddingTop: theme.spacing.xl * 2,
-    paddingBottom: theme.spacing.xl * 2,
+    paddingTop: px(theme.spacing.xl) * 2,
+    paddingBottom: px(theme.spacing.xl) * 2,
     //backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
     borderTop: `1px solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
@@ -68,7 +68,7 @@ const useStyles = createStyles((theme) => ({
   title: {
     fontSize: theme.fontSizes.lg,
     fontWeight: 700,
-    marginBottom: theme.spacing.xs / 2,
+    marginBottom: px(theme.spacing.xs) / 2,
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
   },
 
