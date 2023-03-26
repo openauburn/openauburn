@@ -17,13 +17,14 @@ import {
   Drawer,
   Collapse,
   ScrollArea,
+  px,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
   IconChevronDown,
   IconFlame,
   IconPrison,
-} from '@tabler/icons';
+} from '@tabler/icons-react';
 import Link from 'next/link';
 import LightDarkButton from './LightDarkButton';
 import OpenAuburnLogo from './OpenAuburnLogo';
@@ -54,8 +55,8 @@ const useStyles = createStyles((theme) => ({
 
   subLink: {
     width: '100%',
-    padding: `${theme.spacing.xs}px ${theme.spacing.md}px`,
-    borderRadius: theme.radius.md,
+    padding: `${px(theme.spacing.xs)}px ${px(theme.spacing.md)}px`,
+    borderRadius: px(theme.radius.md),
 
     ...theme.fn.hover({
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
@@ -66,10 +67,10 @@ const useStyles = createStyles((theme) => ({
 
   dropdownFooter: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
-    margin: -theme.spacing.md,
-    marginTop: theme.spacing.sm,
-    padding: `${theme.spacing.md}px ${theme.spacing.md * 2}px`,
-    paddingBottom: theme.spacing.xl,
+    margin: -px(theme.spacing.md),
+    marginTop: px(theme.spacing.sm),
+    padding: `${px(theme.spacing.md)}px ${px(theme.spacing.md) * 2}px`,
+    paddingBottom: px(theme.spacing.xl),
     borderTop: `1px solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1]
     }`,
@@ -220,7 +221,6 @@ const NavHeader = () => {
       <Drawer
         opened={drawerOpened}
         onClose={closeDrawer}
-        size="100%"
         padding="md"
         title="Navigation"
         className={classes.hiddenDesktop}
