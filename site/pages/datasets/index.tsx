@@ -1,9 +1,10 @@
 import { Metadata } from '@/utils/types'
-import { Container, Flex, Grid, Group, Paper, Space, Text, Title, useMantineTheme } from '@mantine/core'
+import { Container, Flex, Grid, Group, Paper, Space, Text, ThemeIcon, Title, useMantineTheme } from '@mantine/core'
 import React from 'react'
 import * as Icons from '@tabler/icons';
 import Link from 'next/link';
 import { base } from '@/utils/api';
+import FetchIcon from '@/components/fetchIcon';
 
 
 interface DatasetsProps {
@@ -14,10 +15,6 @@ export default function Datasets(props: DatasetsProps) {
 
   const theme = useMantineTheme()
 
-  function fetchIcon(iconName: any) {
-    const IconComponent:any = Icons[iconName];
-    return <IconComponent size={22} color={theme.fn.primaryColor()}/>;
-  }
   
   
 
@@ -45,9 +42,9 @@ export default function Datasets(props: DatasetsProps) {
           if (md.public) {
             return (
               <Link href={`/datasets/${md.id}`} key={Math.random() + Date.now()} style={{textDecoration: 'none'}}>
-                <Paper shadow="xs" p="md" withBorder>
+                <Paper shadow="xs" p="md" withBorder style={{marginBottom: 10}}>
                   <Group spacing={'xs'}>
-                    {fetchIcon(md.icon)}
+                    <FetchIcon name={md.icon} size={22} color={theme.fn.primaryColor()}></FetchIcon>
                     <Title order={4}>
                       {md.title}
                     </Title>
