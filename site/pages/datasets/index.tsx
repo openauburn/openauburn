@@ -15,7 +15,7 @@ import React from "react";
 import * as Icons from "@tabler/icons";
 import Link from "next/link";
 import { base } from "@/utils/api";
-import { FetchIcon } from "@/components/FetchIcon";
+import FetchIcon from "@/components/FetchIcon";
 
 interface DatasetsProps {
   metadata: Array<Metadata>;
