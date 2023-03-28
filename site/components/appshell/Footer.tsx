@@ -1,6 +1,6 @@
 import { createStyles, Text, Container, ActionIcon, Group, UnstyledButton, px } from '@mantine/core';
 import { IconBrandTwitter, IconBrandInstagram, IconBrandLinkedin, IconBrandGithub, IconBrandDiscord} from '@tabler/icons-react';
-import OpenAuburnLogo from '../OpenAuburnLogo';
+import OpenAuburnLogo from '../branding/OpenAuburnLogo';
 const useStyles = createStyles((theme) => ({
   footer: {
     paddingTop: px(theme.spacing.xl) * 2,

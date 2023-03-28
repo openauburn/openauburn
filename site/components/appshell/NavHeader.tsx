@@ -27,7 +27,7 @@ import {
 } from '@tabler/icons-react';
 import Link from 'next/link';
 import LightDarkButton from './LightDarkButton';
-import OpenAuburnLogo from '../OpenAuburnLogo';
+import OpenAuburnLogo from '../branding/OpenAuburnLogo';
 
 const useStyles = createStyles((theme) => ({
   link: {
