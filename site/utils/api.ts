@@ -1,1 +1,1 @@
-export const base:string = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080')
+export const base:string|undefined = (process.env.NEXT_PUBLIC_API_BASE_URL_DOCKER || process.env.NEXT_PUBLIC_API_BASE_URL || 'https://www.openauburn.org/api')
