@@ -115,7 +115,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                         />
                         <Script id="google-analytics" strategy="afterInteractive">
                           {`
-                            dataow.dataLayer = window.dataLayer || [];
+                            window.dataLayer = window.dataLayer || [];
                             function gtag(){window.dataLayer.push(arguments);}
                             gtag('js', new Date());
 
