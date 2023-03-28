@@ -145,7 +145,7 @@ const NavHeader = () => {
                 <Link href="/datasets" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
-                      Data
+                      Datasets
                     </Box>
                     <IconChevronDown size={16} color={theme.fn.primaryColor()} />
                   </Center>
