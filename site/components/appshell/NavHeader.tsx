@@ -112,7 +112,6 @@ const NavHeader = () => {
   const [links, setLinks] = useState<Array<JSX.Element>>([]);
 
   useEffect(() => {
-    console.log(base + "/metadata");
     fetch(base + "/metadata")
       .then((res) => res.json())
       .then((data) => setMetadata(data.splice(0, 4)));
