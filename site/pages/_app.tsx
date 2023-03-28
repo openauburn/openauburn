@@ -93,15 +93,15 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                                  "title": "Community",
                                  "links": [
                                    {
-                                     "label": "Join Discord",
+                                     "label": "Discord",
                                      "link": "https://discord.com/invite/pjabvqrReR"
                                    },
                                    {
-                                     "label": "Follow on Twitter",
+                                     "label": "Twitter",
                                      "link": "https://twitter.com/OpenAuburn"
                                    },
                                    {
-                                     "label": "Open source",
+                                     "label": "GitHub",
                                      "link": "https://github.com/openauburn"
                                    }
                                  ]
