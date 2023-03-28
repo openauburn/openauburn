@@ -28,7 +28,7 @@ import OpenAuburnLogo from "../branding/OpenAuburnLogo";
 import { base } from "@/utils/api";
 import { Metadata } from "@/utils/types";
 import { useEffect, useState } from "react";
-import FetchIcon from "@/components/FetchIcon";
+import FetchIcon from "../FetchIcon";
 import { IconBrandInstagram } from "@tabler/icons";
 import { IconBrandTwitter } from "@tabler/icons";
 import { IconBrandDiscord } from "@tabler/icons";
