@@ -1,4 +1,3 @@
-import { ClassNames } from '@emotion/react';
 import {
   createStyles,
   Header,
@@ -28,6 +27,10 @@ import {
 import Link from 'next/link';
 import LightDarkButton from './LightDarkButton';
 import OpenAuburnLogo from '../branding/OpenAuburnLogo';
+import { base } from '@/utils/api';
+import { Metadata } from '@/utils/types';
+import { useEffect, useState } from 'react';
+import FetchIcon from '../FetchIcon';
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -88,43 +91,44 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const mockdata = [
-  {
-    icon: IconPrison,
-    title: 'Crimes',
-    description: 'Crime reports on or around Auburn University’s campuses.',
-    link: '/datasets/Crimes'
-  },
-  {
-    icon: IconFlame,
-    title: 'Fires',
-    description: 'Fire reports on or around Auburn University’s campuses.',
-    link: '/datasets/Fires'
-  }
-];
 
 const NavHeader = () => {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const { classes, theme } = useStyles();
+  const [metadata, setMetadata] = useState<Array<Metadata>>([]);
+  const [links, setLinks] = useState<Array<JSX.Element>>([])
 
-  const links = mockdata.map((item) => (
-    <UnstyledButton className={classes.subLink} key={item.title} component={'a'} href={item.link}>
-      <Group noWrap align="flex-start">
-        <ThemeIcon size={34} variant="default" radius="md">
-          <item.icon size={22} color={theme.fn.primaryColor()} />
-        </ThemeIcon>
-        <div>
-          <Text size="sm" weight={500}>
-            {item.title}
-          </Text>
-          <Text size="xs" color="dimmed">
-            {item.description}
-          </Text>
-        </div>
-      </Group>
-    </UnstyledButton>
-  ));
+  useEffect(() => {
+    console.log(base + "/metadata")
+    fetch(base + "/metadata")
+      .then((res) => res.json())
+      .then((data) => setMetadata(data.splice(0,4)) )
+  }, [])
+
+  useEffect(() => {
+    setLinks(getLinks(metadata))
+  }, [metadata, theme])
+
+  function getLinks(metadata: Array<Metadata>){
+    return  metadata.map((item) => (
+      <UnstyledButton className={classes.subLink} key={Date.now() + Math.random()} component={'a'} href={`/datasets/${item.id}`}>
+        <Group noWrap align="flex-start">
+            <ThemeIcon size={34} variant="default" radius="md">
+              <FetchIcon name={item.icon} size={22} color={theme.fn.primaryColor()}></FetchIcon>
+            </ThemeIcon>
+          <div>
+            <Text size="sm" weight={500}>
+              {item.title}
+            </Text>
+            <Text size="xs" color="dimmed">
+              {item.summary}
+            </Text>
+          </div>
+        </Group>
+      </UnstyledButton>
+    ));
+  }
 
   return (
     <Box>
