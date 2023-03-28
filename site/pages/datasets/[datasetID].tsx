@@ -39,7 +39,7 @@ export default function Dataset(props: DatasetProps) {
 
 export async function getServerSideProps(context: any) {
   const {datasetID} = context.query
-  const res = await fetch(base +`/api/metadata`);
+  const res = await fetch(base +`/metadata`);
   const metadata = await res.json()
 
   // return props
