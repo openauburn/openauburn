@@ -58,7 +58,11 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                                {
                                  "title": "About",
                                  "links": [
-                                   {
+                                  {
+                                    "label": "Datasets",
+                                    "link": "/datasets"
+                                  }, 
+                                  {
                                      "label": "Features",
                                      "link": "/home#features"
                                    },
@@ -66,10 +70,6 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                                      "label": "Mission",
                                      "link": "/about"
                                    },
-                                   {
-                                     "label": "Datasets",
-                                     "link": "/datasets"
-                                   }
                                  ]
                                },
                                {
