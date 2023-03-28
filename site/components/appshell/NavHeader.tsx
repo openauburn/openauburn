@@ -27,7 +27,7 @@ import {
 } from '@tabler/icons-react';
 import Link from 'next/link';
 import LightDarkButton from './LightDarkButton';
-import OpenAuburnLogo from './OpenAuburnLogo';
+import OpenAuburnLogo from '../OpenAuburnLogo';
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -64,7 +64,6 @@ const useStyles = createStyles((theme) => ({
 
     '&:active': theme.activeStyles,
   },
-
   dropdownFooter: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
     margin: -px(theme.spacing.md),

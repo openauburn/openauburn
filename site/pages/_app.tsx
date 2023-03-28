@@ -4,8 +4,8 @@ import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider, AppShell, useMantineTheme } from '@mantine/core';
 import {useHotkeys} from '@mantine/hooks';
-import NavHeader from '@/components/NavHeader';
-import Footer from '@/components/Footer';
+import NavHeader from '@/components/appshell/NavHeader';
+import Footer from '@/components/appshell/Footer';
 import Script from 'next/script';
 
 import { poppinsBold, noto, noto_mono } from '@/lib/CustomFonts';
