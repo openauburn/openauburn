@@ -4,7 +4,7 @@ import React from 'react'
 import * as Icons from '@tabler/icons';
 import Link from 'next/link';
 import { base } from '@/utils/api';
-import FetchIcon from '@/components/fetchIcon';
+import FetchIcon from '@/components/FetchIcon';
 
 
 interface DatasetsProps {
@@ -69,7 +69,7 @@ export default function Datasets(props: DatasetsProps) {
 
 export async function getServerSideProps() {
   // get todo data from API
-  const res = await fetch(base + "/api/metadata")
+  const res = await fetch(base + "/metadata")
   const metadata = await res.json()
 
   // return props
