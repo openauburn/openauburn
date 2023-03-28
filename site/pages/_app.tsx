@@ -1,5 +1,4 @@
-import '@/styles/globals.css'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
@@ -68,8 +67,8 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                                      "link": "/about"
                                    },
                                    {
-                                     "label": "People",
-                                     "link": "/people"
+                                     "label": "Datasets",
+                                     "link": "/datasets"
                                    }
                                  ]
                                },
@@ -116,7 +115,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                         />
                         <Script id="google-analytics" strategy="afterInteractive">
                           {`
-                            window.dataLayer = window.dataLayer || [];
+                            dataow.dataLayer = window.dataLayer || [];
                             function gtag(){window.dataLayer.push(arguments);}
                             gtag('js', new Date());
 
