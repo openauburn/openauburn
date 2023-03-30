@@ -119,7 +119,7 @@ const NavHeader = () => {
 
   useEffect(() => {
     setLinks(getLinks(metadata));
-  }, [metadata, theme]);
+  }, [metadata, theme, getLinks]);
 
   function getLinks(metadata: Array<Metadata>) {
     return metadata.map((item) => (
