@@ -1,5 +1,6 @@
-import { Metadata, Tag } from "@/utils/types";
+import { License, Metadata, Tag } from "@/utils/types";
 import {
+  ActionIcon,
   Badge,
   Center,
   Container,
@@ -7,36 +8,104 @@ import {
   Flex,
   Grid,
   Group,
+  Input,
+  MultiSelect,
   Paper,
   Space,
   Stack,
   Switch,
   Text,
-  ThemeIcon,
+  Textarea,
+  TextInput,
   Title,
   useMantineTheme,
 } from "@mantine/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Icons from "@tabler/icons";
 import Link from "next/link";
 import { base } from "@/utils/api";
 import FetchIcon from "@/components/FetchIcon";
 import { IconClock } from "@tabler/icons";
-
+import { IconSquare } from "@tabler/icons-react";
+import { IconSquarePlus } from "@tabler/icons";
+import { IconSquareMinus } from "@tabler/icons";
+import { ValueOf } from "next/dist/shared/lib/constants";
+import _, { includes } from "lodash";
+import { IconSearch } from "@tabler/icons";
+import { IconListSearch } from "@tabler/icons";
+import { type } from "os";
+import { match } from "assert";
 interface DatasetsProps {
   metadata: Array<Metadata>;
   tags: Array<Tag>;
+  licenses: Array<License>;
 }
+
+interface DatasetFilter {
+  [key: string | symbol | number]: any;
+}
+const INIT_FILTER: DatasetFilter = {
+  tags: [],
+  license: [],
+  SEARCH: "",
+};
 
 export default function Datasets(props: DatasetsProps) {
   const theme = useMantineTheme();
+  const [filterProps, setFilterProps] = useState<any>(INIT_FILTER);
   const [showDetails, setShowDetails] = useState<boolean>(false);
+  const [filterDatasets, setFilterDatasets] = useState<Array<Metadata>>(
+    props.metadata
+  );
+  const updateFilter = (field: string, value: any) => {
+    setFilterProps({
+      ...filterProps,
+      [field]: value,
+    });
+  };
+
+  useEffect(() => {
+    if (!_.isEqual(filterProps, INIT_FILTER)) {
+      setFilterDatasets(
+        props.metadata.filter((md: Metadata) => {
+          let matches: boolean = false;
+          for (const key in filterProps) {
+            const value = filterProps[key];
+            if (value != INIT_FILTER[key.toString()]) {
+              if (key === "SEARCH") {
+                let v = value.toLowerCase();
+                if (
+                  md.title.toLowerCase().includes(v) ||
+                  md.description.toLowerCase().includes(v) ||
+                  md.summary.toLowerCase().includes(v)
+                ) {
+                  matches = true;
+                }
+              } else if (Array.isArray(md[key])) {
+                if (md[key].filter((i: any) => value.includes(i)).length > 0) {
+                  matches = true;
+                }
+              } else {
+                if (value.includes(md[key])) {
+                  matches = true;
+                }
+              }
+            }
+          }
+          return matches;
+        })
+      );
+    } else {
+      setFilterDatasets(props.metadata);
+    }
+  }, [filterProps]);
+
   return (
     <>
       <Container>
+        <Space h={"xl"} />
+        <Space h={"xl"} />
         <div>
-          <Space h={"xl"} />
-          <Space h={"xl"} />
           <Grid>
             <Grid.Col md={12} lg={6}>
               <Title order={1}>Datasets</Title>
@@ -50,37 +119,99 @@ export default function Datasets(props: DatasetsProps) {
         </div>
         <Space h={"xl"} />
 
-        <Space h={"sm"} />
+        <div>
+          <Text size={"md"}>Search</Text>
+          <TextInput
+            icon={<IconListSearch />}
+            value={filterProps.SEARCH}
+            onChange={(event) => {
+              updateFilter("SEARCH", event.currentTarget.value);
+            }}
+            placeholder={"Search for datasets by name or description"}
+          />
+        </div>
+        <Space h={"lg"} />
         <Grid>
           <Grid.Col md={12} lg={2}>
-            <Title order={4}>Tags</Title>
-            {props.tags.map((tag: Tag) => {
+            <Stack>
+              <div>
+                <Text size={"md"}>Tags</Text>
+                <MultiSelect
+                  data={props.tags.map((tag: Tag) => {
+                    return { value: String(tag.id), label: tag.title };
+                  })}
+                  value={filterProps.tags.map(String)}
+                  onChange={(value: any[]) =>
+                    updateFilter("tags", value.map(Number))
+                  }
+                />
+              </div>
+              <div>
+                <Text size={"md"}>Licenses</Text>
+                <MultiSelect
+                  data={props.licenses.map((license: License) => {
+                    return {
+                      value: String(license.id),
+                      label: license.license_id,
+                    };
+                  })}
+                  value={filterProps.license.map(String)}
+                  onChange={(value: any[]) =>
+                    updateFilter("license", value.map(Number))
+                  }
+                />
+              </div>
+            </Stack>
+            {/* {props.tags.map((tag: Tag) => {
+            </Stack>
+            <Stack
               return (
                 <Text ff={"monospace"} fz={"sm"}>
                   {tag.title}
                 </Text>
               );
-            })}
+            })} */}
           </Grid.Col>
           <Grid.Col md={12} lg={10}>
-            <Container
-              sx={{ display: "flex", justifyContent: "space-between" }}
-            >
-              <Text
-                ff={"monospace"}
-                sx={{ fontSize: theme.fontSizes.sm }}
-              >{`${props.metadata.length} datasets found`}</Text>
-              <Group>
-                <Text>{`${showDetails ? "Hide" : "Show"} details`}</Text>
+            <Stack w={"100%"}>
+              <Container
+                sx={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text
+                  ff={"monospace"}
+                  sx={{ fontSize: theme.fontSizes.sm }}
+                >{`${filterDatasets.length} datasets found`}</Text>
+                <Group>
+                  <Group spacing={0}>
+                    <ActionIcon
+                      color={!showDetails ? theme.primaryColor : "gray"}
+                      onClick={() => setShowDetails(true)}
+                    >
+                      <IconSquarePlus />
+                    </ActionIcon>
+                    <ActionIcon
+                      color={showDetails ? theme.primaryColor : "gray"}
+                      onClick={() => setShowDetails(false)}
+                    >
+                      <IconSquareMinus />
+                    </ActionIcon>
+                  </Group>
+                  {/* 
                 <Switch
                   checked={showDetails}
                   onChange={(event) =>
                     setShowDetails(event.currentTarget.checked)
                   }
-                ></Switch>
-              </Group>
-            </Container>
-            {props.metadata.map((md: Metadata) => {
+                ></Switch> */}
+                </Group>
+              </Container>
+            </Stack>
+            {/* Datasets List */}
+            {filterDatasets.map((md: Metadata) => {
               if (md.public) {
                 return (
                   <Paper
@@ -88,12 +219,12 @@ export default function Datasets(props: DatasetsProps) {
                     p="md"
                     radius={"lg"}
                     withBorder
+                    key={Math.random() + Date.now()}
                     style={{ marginBottom: 10 }}
                   >
                     <Stack spacing={0}>
                       <Link
                         href={`/datasets/${md.id}`}
-                        key={Math.random() + Date.now()}
                         style={{ textDecoration: "none" }}
                       >
                         <Group spacing={"xs"} sx={{ width: "100%" }}>
@@ -108,13 +239,14 @@ export default function Datasets(props: DatasetsProps) {
                         </Group>
                       </Link>
                       <Group spacing={3}>
+                        {/* Tags List  */}
                         {(md.tags || []).map((tagID: number) => {
                           let tagObj = props.tags.filter(
                             (x) => x.id === tagID
                           )[0];
                           if (tagObj !== undefined) {
                             return (
-                              <Paper>
+                              <Paper key={Date.now() + Math.random()}>
                                 <Badge
                                   pl={3}
                                   sx={{
@@ -183,8 +315,12 @@ export async function getServerSideProps() {
 
   const res2 = await fetch(base + "/tags");
   const tags = await res2.json();
+
+  const res3 = await fetch(base + "/licenses");
+  const licenses = await res3.json();
+
   // return props
   return {
-    props: { metadata, tags },
+    props: { metadata, tags, licenses },
   };
 }
