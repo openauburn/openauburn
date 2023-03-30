@@ -219,7 +219,7 @@ export default function Datasets(props: DatasetsProps) {
                     p="md"
                     radius={"lg"}
                     withBorder
-                    key={Math.random() + Date.now()}
+                    key={md.id.toString()}
                     style={{ marginBottom: 10 }}
                   >
                     <Stack spacing={0}>
@@ -246,7 +246,7 @@ export default function Datasets(props: DatasetsProps) {
                           )[0];
                           if (tagObj !== undefined) {
                             return (
-                              <Paper key={Date.now() + Math.random()}>
+                              <Paper key={tagID.toString()}>
                                 <Badge
                                   pl={3}
                                   sx={{
