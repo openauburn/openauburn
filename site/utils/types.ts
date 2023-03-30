@@ -16,11 +16,15 @@ export interface Metadata {
 }
 
 export interface Tag {
-  id: Number,
-  title: String,
+  id: number,
+  title: string,
+  icon: Array<string> | [],
+  [key: string]: any;
+
 }
 
 export interface License {
-  id: Number,
-  title: String,
+  id: number,
+  title: string,
+  license_id: string,
 }
