@@ -98,7 +98,7 @@ export default function Datasets(props: DatasetsProps) {
     } else {
       setFilterDatasets(props.metadata);
     }
-  }, [filterProps]);
+  }, [props.metadata, filterProps]);
 
   return (
     <>

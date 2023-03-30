@@ -18,7 +18,7 @@ export interface Metadata {
 export interface Tag {
   id: number,
   title: string,
-  icon: Array<string> | [],
+  icon: string,
   [key: string]: any;
 
 }
@@ -27,4 +27,5 @@ export interface License {
   id: number,
   title: string,
   license_id: string,
+  url: string
 }
