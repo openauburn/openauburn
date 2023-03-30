@@ -24,6 +24,7 @@ export interface Tag {
 }
 
 export interface License {
-  id: Number,
-  title: String,
+  id: number,
+  title: string,
+  license_id: string,
 }
