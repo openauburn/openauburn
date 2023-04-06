@@ -285,6 +285,13 @@ export default function Datasets(props: DatasetsProps) {
                           }}
                         >
                           <Group spacing={5}>
+                            <Text
+                              ff={"monospace"}
+                              transform={"uppercase"}
+                              size={"xs"}
+                            >
+                              Last updated
+                            </Text>
                             <IconClock size={12}></IconClock>
                             <Text
                               ff={"monospace"}

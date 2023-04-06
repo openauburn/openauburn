@@ -98,7 +98,7 @@ export default function Dataset(props: DatasetProps) {
           </Grid>
           <Grid>
             <Grid.Col md={12} lg={8}></Grid.Col>
-            <Grid.Col md={12} lg={4}>
+            <Grid.Col md={12} lg={12}>
               <Paper p={15} withBorder radius={"md"}>
                 <Stack>
                   <Title order={4}>Details</Title>
@@ -149,7 +149,7 @@ export default function Dataset(props: DatasetProps) {
         <Space h={"xl"} />
         <Stack spacing={3}>
           <Title order={3}>Related datasets</Title>
-          <Group>
+          <Grid>
             {props.metadata
               .filter((md: Metadata) => {
                 return (
@@ -160,52 +160,52 @@ export default function Dataset(props: DatasetProps) {
               .slice(0, 4)
               .map((md: Metadata) => {
                 return (
-                  <Link
-                    href={`/datasets/${md.id}`}
-                    key={md.id.toString()}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <Paper
-                      withBorder
-                      shadow={"md"}
-                      radius={"md"}
-                      p={"md"}
-                      sx={{
-                        width: 200,
-                        height: 200,
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                      }}
+                  <Grid.Col md={6} lg={3} key={md.id.toString()}>
+                    <Link
+                      href={`/datasets/${md.id}`}
+                      style={{ textDecoration: "none" }}
                     >
-                      <Stack spacing={"xs"}>
-                        <Group spacing={3}>
-                          <Title order={6}>{md.title}</Title>
-                        </Group>
-                        <div>
-                          {md.tags.map((t_id: number) => {
-                            let tag = props.tags.filter((t) => {
-                              return t.id === t_id;
-                            })[0];
-                            if (tag !== undefined) {
-                              return (
-                                <CustomBadge
-                                  key={tag.id}
-                                  icon={tag.icon.toString()}
-                                  title={tag.title}
-                                  id={tag.id}
-                                />
-                              );
-                            }
-                          })}
-                        </div>
+                      <Paper
+                        withBorder
+                        shadow={"md"}
+                        radius={"md"}
+                        p={"md"}
+                        sx={{
+                          // width: 200,
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        <Stack spacing={"xs"}>
+                          <Group spacing={3}>
+                            <Title order={6}>{md.title}</Title>
+                          </Group>
+                          <div>
+                            {md.tags.map((t_id: number) => {
+                              let tag = props.tags.filter((t) => {
+                                return t.id === t_id;
+                              })[0];
+                              if (tag !== undefined) {
+                                return (
+                                  <CustomBadge
+                                    key={tag.id}
+                                    icon={tag.icon.toString()}
+                                    title={tag.title}
+                                    id={tag.id}
+                                  />
+                                );
+                              }
+                            })}
+                          </div>
 
-                        <Text size={"sm"}>{md.summary}</Text>
-                      </Stack>
-                    </Paper>
-                  </Link>
+                          <Text size={"sm"}>{md.summary}</Text>
+                        </Stack>
+                      </Paper>
+                    </Link>
+                  </Grid.Col>
                 );
               })}
-          </Group>
+          </Grid>
         </Stack>
       </Container>
     </>
