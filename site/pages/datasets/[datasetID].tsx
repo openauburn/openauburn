@@ -1,8 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { License, Metadata, Tag } from "@/utils/types";
+import { Metadata } from "@/utils/types";
 import { base } from "@/utils/api";
+import licenses from "@/lib/licenses.json";
 import {
   Button,
   Container,
@@ -13,16 +14,12 @@ import {
   Space,
   Stack,
   Text,
-  ThemeIcon,
   Title,
   useMantineTheme,
 } from "@mantine/core";
 import FetchIcon from "@/components/FetchIcon";
-import { IconArrowBack } from "@tabler/icons";
 import { IconArrowNarrowLeft } from "@tabler/icons";
 import Link from "next/link";
-import CustomBadge from "@/components/data_display/CustomBadge";
-import { ClassNames } from "@emotion/react";
 
 interface DatasetProps {
   metadata: Array<Metadata>;
@@ -39,6 +36,7 @@ export default function Dataset(props: DatasetProps) {
 
   const theme = useMantineTheme();
 
+  const license = licenses.filter((l) => l.id === dataset.license)[0];
   return (
     <>
       <Head>
@@ -121,27 +119,27 @@ export default function Dataset(props: DatasetProps) {
                   </div> */}
                   <Divider />
                   {/* TODO: Please have a local list of licenses, for which we can compare against and get license context data */}
-                  {/* <div>
-                    <Text>License</Text> 
-                    <Link
-                      href={
-                        dataset.license !== ""
-                          ? dataset.license
-                          : `/datasets/${dataset._id}`
-                      }
-                      style={{ textDecoration: "none" }}
-                      target="_blank"
-                    >
-                      <Text
-                        ff={"monospace"}
-                        transform={"uppercase"}
-                        size={"sm"}
-                        color={"dimmed"}
+                  <div>
+                    <Text>License</Text>
+                    {dataset.license !== null ? (
+                      <Link
+                        href={license.url}
+                        style={{ textDecoration: "none" }}
+                        target="_blank"
                       >
-                        {license.title}
-                      </Text>
-                    </Link>
-                  </div>*/}
+                        <Text
+                          ff={"monospace"}
+                          transform={"uppercase"}
+                          size={"sm"}
+                          color={"dimmed"}
+                        >
+                          {license.title}
+                        </Text>
+                      </Link>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
                 </Stack>
               </Paper>
             </Grid.Col>
@@ -217,11 +215,6 @@ export async function getServerSideProps(context: any) {
   const { datasetID } = context.query;
   const res = await fetch(base + `/metadata`);
   const metadata = await res.json();
-  // const res2 = await fetch(base + "/licenses");
-  // const licenses = await res2.json();
-  // const res3 = await fetch(base + "/tags");
-  // const tags = await res3.json();
-  // return props
   return {
     props: { metadata },
   };

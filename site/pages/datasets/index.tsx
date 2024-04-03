@@ -21,24 +21,20 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import React, { useEffect, useState } from "react";
-import * as Icons from "@tabler/icons";
 import Link from "next/link";
 import { base } from "@/utils/api";
 import FetchIcon from "@/components/FetchIcon";
 import { IconClock } from "@tabler/icons";
-import { IconSquare } from "@tabler/icons-react";
 import { IconSquarePlus } from "@tabler/icons";
 import { IconSquareMinus } from "@tabler/icons";
 import { ValueOf } from "next/dist/shared/lib/constants";
 import _, { includes } from "lodash";
-import { IconSearch } from "@tabler/icons";
 import { IconListSearch } from "@tabler/icons";
 import { type } from "os";
 import { match } from "assert";
+import licenses from "@/lib/licenses.json";
 interface DatasetsProps {
   metadata: Array<Metadata>;
-  // tags: Array<Tag>;
-  // licenses: Array<License>;
 }
 
 interface DatasetFilter {
@@ -133,8 +129,8 @@ export default function Datasets(props: DatasetsProps) {
         <Space h={"lg"} />
         <Grid>
           <Grid.Col md={12} lg={2}>
-            {/* <Stack>
-              <div>
+            <Stack>
+              {/* <div>
                 <Text size={"md"}>Tags</Text>
                 <MultiSelect
                   data={props.tags.map((tag: Tag) => {
@@ -145,23 +141,23 @@ export default function Datasets(props: DatasetsProps) {
                     updateFilter("tags", value.map(Number))
                   }
                 />
-              </div>
+              </div> */}
               <div>
                 <Text size={"md"}>Licenses</Text>
                 <MultiSelect
-                  data={props.licenses.map((license: License) => {
+                  data={licenses.map((license) => {
                     return {
                       value: String(license.id),
-                      label: license.license_id,
+                      label: license.id,
                     };
                   })}
                   value={filterProps.license.map(String)}
                   onChange={(value: any[]) =>
-                    updateFilter("license", value.map(Number))
+                    updateFilter("license", value.map(String))
                   }
                 />
               </div>
-            </Stack> */}
+            </Stack>
             {/* {props.tags.map((tag: Tag) => {
             </Stack>
             <Stack
@@ -317,11 +313,11 @@ export default function Datasets(props: DatasetsProps) {
 
 export async function getServerSideProps() {
   // get todo data from API
-  const res = await fetch(base + "/metadata");
-  const metadata = await res.json();
+  const md_res = await fetch(base + "/metadata");
+  const metadata = await md_res.json();
 
-  // const res2 = await fetch(base + "/tags");
-  // const tags = await res2.json();
+  // const tag_res = await fetch(base + "/tags");
+  // const tags = await tag_res.json();
 
   // const res3 = await fetch(base + "/licenses");
   // const licenses = await res3.json();
