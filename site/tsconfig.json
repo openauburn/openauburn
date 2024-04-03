@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "target": "es2015",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,9 +16,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     },
     "plugins": [
       {
@@ -35,9 +29,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "./typings/**/*.ts"
-, "lib/mongo/conn.js", "lib/mongo/conn.js", "lib/mongo/controller.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "./typings/**/*.ts",
+    "lib/mongo/conn.js",
+    "lib/mongo/conn.js",
+    "lib/mongo/controller.js"
+  ],
+  "exclude": ["node_modules"]
 }

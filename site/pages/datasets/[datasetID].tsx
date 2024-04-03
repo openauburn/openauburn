@@ -18,6 +18,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import FetchIcon from "@/components/FetchIcon";
+import CustomBadge from "@/components/data_display/CustomBadge";
 import { IconArrowNarrowLeft } from "@tabler/icons";
 import Link from "next/link";
 
@@ -99,26 +100,13 @@ export default function Dataset(props: DatasetProps) {
                 <Stack>
                   <Title order={4}>Details</Title>
                   <Divider />
-                  {/* TODO: Maybe heal tag logic? */}
-
-                  {/* <div>
+                  <div>
                     <Text>Tags</Text>
-                    {dataset.tags.map((t_id: number) => {
-                      let tag = props.tags.filter((t) => {
-                        return t.id === t_id;
-                      })[0];
-                      return (
-                        <CustomBadge
-                          key={tag.id}
-                          icon={tag.icon.toString()}
-                          title={tag.title}
-                          id={tag.id}
-                        />
-                      );
-                    })}
-                  </div> */}
+                    {dataset.tags.map((tag: string) => (
+                      <CustomBadge key={tag} title={tag} id={tag} />
+                    ))}
+                  </div>
                   <Divider />
-                  {/* TODO: Please have a local list of licenses, for which we can compare against and get license context data */}
                   <div>
                     <Text>License</Text>
                     {dataset.license !== null ? (
@@ -146,13 +134,13 @@ export default function Dataset(props: DatasetProps) {
           </Grid>
         </Stack>
         <Space h={"xl"} />
-        {/* <Stack spacing={3}>
+        <Stack spacing={3}>
           <Title order={3}>Related datasets</Title>
           <Grid>
             {props.metadata
               .filter((md: Metadata) => {
                 return (
-                  dataset.tags.filter((t: number) => md.tags.includes(t))
+                  dataset.tags.filter((tag: string) => md.tags.includes(tag))
                     .length > 0 && dataset._id !== md._id
                 );
               })
@@ -180,23 +168,10 @@ export default function Dataset(props: DatasetProps) {
                             <Title order={6}>{md.title}</Title>
                           </Group>
                           <div>
-                            {md.tags.map((t_id: number) => {
-                              let tag = props.tags.filter((t) => {
-                                return t.id === t_id;
-                              })[0];
-                              if (tag !== undefined) {
-                                return (
-                                  <CustomBadge
-                                    key={tag.id}
-                                    icon={tag.icon.toString()}
-                                    title={tag.title}
-                                    id={tag.id}
-                                  />
-                                );
-                              }
-                            })}
+                            {md.tags.map((tag: string) => (
+                              <CustomBadge key={tag} title={tag} id={tag} />
+                            ))}
                           </div>
-
                           <Text size={"sm"}>{md.summary}</Text>
                         </Stack>
                       </Paper>
@@ -205,7 +180,7 @@ export default function Dataset(props: DatasetProps) {
                 );
               })}
           </Grid>
-        </Stack> */}
+        </Stack>
       </Container>
     </>
   );

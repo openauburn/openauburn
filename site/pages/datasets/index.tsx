@@ -53,6 +53,11 @@ export default function Datasets(props: DatasetsProps) {
   const [filterDatasets, setFilterDatasets] = useState<Array<Metadata>>(
     props.metadata
   );
+  const tags = [
+    ...new Set(
+      props.metadata.map((md) => md.tags).flatMap((subtags) => subtags)
+    ),
+  ];
   const updateFilter = (field: string, value: any) => {
     setFilterProps({
       ...filterProps,
@@ -130,18 +135,18 @@ export default function Datasets(props: DatasetsProps) {
         <Grid>
           <Grid.Col md={12} lg={2}>
             <Stack>
-              {/* <div>
+              <div>
                 <Text size={"md"}>Tags</Text>
                 <MultiSelect
-                  data={props.tags.map((tag: Tag) => {
-                    return { value: String(tag.id), label: tag.title };
+                  data={tags.map((tag: string) => {
+                    return { value: String(tag), label: tag };
                   })}
                   value={filterProps.tags.map(String)}
                   onChange={(value: any[]) =>
-                    updateFilter("tags", value.map(Number))
+                    updateFilter("tags", value.map(String))
                   }
                 />
-              </div> */}
+              </div>
               <div>
                 <Text size={"md"}>Licenses</Text>
                 <MultiSelect
