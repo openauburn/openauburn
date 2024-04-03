@@ -127,12 +127,12 @@ const NavHeader = () => {
         className={classes.subLink}
         key={Date.now() + Math.random()}
         component={"a"}
-        href={`/datasets/${item.id}`}
+        href={`/datasets/${item._id}`}
       >
         <Group noWrap align="flex-start">
           <ThemeIcon size={34} variant="default" radius="md">
             <FetchIcon
-              name={item.icon}
+              name={item.portal_icon}
               size={22}
               color={theme.fn.primaryColor()}
             ></FetchIcon>

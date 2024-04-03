@@ -26,16 +26,14 @@ import { ClassNames } from "@emotion/react";
 
 interface DatasetProps {
   metadata: Array<Metadata>;
-  licenses: Array<License>;
-  tags: Array<Tag>;
 }
 
 export default function Dataset(props: DatasetProps) {
   const router = useRouter();
   const { datasetID } = router.query;
-  const dataset = props.metadata.filter((md) => md.id === Number(datasetID))[0];
-
-  const license = props.licenses.filter((l) => l.id === dataset.license)[0];
+  const dataset = props.metadata.filter(
+    (md) => md._id === Number(datasetID)
+  )[0];
 
   const text = `${dataset.title} | Open Auburn`;
 
@@ -62,7 +60,7 @@ export default function Dataset(props: DatasetProps) {
           <Grid>
             <Grid.Col md={12} lg={10}>
               <Group spacing={5}>
-                <FetchIcon name={dataset.icon} size={36} />
+                <FetchIcon name={dataset.portal_icon} size={36} />
                 <Title>{dataset.title}</Title>
               </Group>
               <Text>{dataset.summary}</Text>
@@ -103,7 +101,9 @@ export default function Dataset(props: DatasetProps) {
                 <Stack>
                   <Title order={4}>Details</Title>
                   <Divider />
-                  <div>
+                  {/* TODO: Maybe heal tag logic? */}
+
+                  {/* <div>
                     <Text>Tags</Text>
                     {dataset.tags.map((t_id: number) => {
                       let tag = props.tags.filter((t) => {
@@ -118,15 +118,16 @@ export default function Dataset(props: DatasetProps) {
                         />
                       );
                     })}
-                  </div>
+                  </div> */}
                   <Divider />
-                  <div>
-                    <Text>License</Text>
+                  {/* TODO: Please have a local list of licenses, for which we can compare against and get license context data */}
+                  {/* <div>
+                    <Text>License</Text> 
                     <Link
                       href={
-                        license.url !== ""
-                          ? license.url
-                          : `/datasets/${dataset.id}`
+                        dataset.license !== ""
+                          ? dataset.license
+                          : `/datasets/${dataset._id}`
                       }
                       style={{ textDecoration: "none" }}
                       target="_blank"
@@ -140,29 +141,29 @@ export default function Dataset(props: DatasetProps) {
                         {license.title}
                       </Text>
                     </Link>
-                  </div>
+                  </div>*/}
                 </Stack>
               </Paper>
             </Grid.Col>
           </Grid>
         </Stack>
         <Space h={"xl"} />
-        <Stack spacing={3}>
+        {/* <Stack spacing={3}>
           <Title order={3}>Related datasets</Title>
           <Grid>
             {props.metadata
               .filter((md: Metadata) => {
                 return (
                   dataset.tags.filter((t: number) => md.tags.includes(t))
-                    .length > 0 && dataset.id !== md.id
+                    .length > 0 && dataset._id !== md._id
                 );
               })
               .slice(0, 4)
               .map((md: Metadata) => {
                 return (
-                  <Grid.Col md={6} lg={3} key={md.id.toString()}>
+                  <Grid.Col md={6} lg={3} key={md._id.toString()}>
                     <Link
-                      href={`/datasets/${md.id}`}
+                      href={`/datasets/${md._id}`}
                       style={{ textDecoration: "none" }}
                     >
                       <Paper
@@ -206,7 +207,7 @@ export default function Dataset(props: DatasetProps) {
                 );
               })}
           </Grid>
-        </Stack>
+        </Stack> */}
       </Container>
     </>
   );
@@ -216,12 +217,12 @@ export async function getServerSideProps(context: any) {
   const { datasetID } = context.query;
   const res = await fetch(base + `/metadata`);
   const metadata = await res.json();
-  const res2 = await fetch(base + "/licenses");
-  const licenses = await res2.json();
-  const res3 = await fetch(base + "/tags");
-  const tags = await res3.json();
+  // const res2 = await fetch(base + "/licenses");
+  // const licenses = await res2.json();
+  // const res3 = await fetch(base + "/tags");
+  // const tags = await res3.json();
   // return props
   return {
-    props: { metadata, licenses, tags },
+    props: { metadata },
   };
 }

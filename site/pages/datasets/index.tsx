@@ -37,8 +37,8 @@ import { type } from "os";
 import { match } from "assert";
 interface DatasetsProps {
   metadata: Array<Metadata>;
-  tags: Array<Tag>;
-  licenses: Array<License>;
+  // tags: Array<Tag>;
+  // licenses: Array<License>;
 }
 
 interface DatasetFilter {
@@ -133,7 +133,7 @@ export default function Datasets(props: DatasetsProps) {
         <Space h={"lg"} />
         <Grid>
           <Grid.Col md={12} lg={2}>
-            <Stack>
+            {/* <Stack>
               <div>
                 <Text size={"md"}>Tags</Text>
                 <MultiSelect
@@ -161,7 +161,7 @@ export default function Datasets(props: DatasetsProps) {
                   }
                 />
               </div>
-            </Stack>
+            </Stack> */}
             {/* {props.tags.map((tag: Tag) => {
             </Stack>
             <Stack
@@ -212,101 +212,101 @@ export default function Datasets(props: DatasetsProps) {
             </Stack>
             {/* Datasets List */}
             {filterDatasets.map((md: Metadata) => {
-              if (md.public) {
-                return (
-                  <Paper
-                    shadow="xs"
-                    p="md"
-                    radius={"lg"}
-                    withBorder
-                    key={md.id.toString()}
-                    style={{ marginBottom: 10 }}
-                  >
-                    <Stack spacing={0}>
-                      <Link
-                        href={`/datasets/${md.id}`}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <Group spacing={"xs"} sx={{ width: "100%" }}>
-                          <FetchIcon
-                            name={md.icon}
-                            size={22}
-                            color={theme.fn.primaryColor()}
-                          ></FetchIcon>
-                          <Title order={4} sx={{ color: "CaptionText" }}>
-                            {md.title}
-                          </Title>{" "}
-                        </Group>
-                      </Link>
-                      <Group spacing={3}>
-                        {/* Tags List  */}
-                        {(md.tags || []).map((tagID: number) => {
-                          let tagObj = props.tags.filter(
-                            (x) => x.id === tagID
-                          )[0];
-                          if (tagObj !== undefined) {
-                            return (
-                              <Paper key={tagID.toString()}>
-                                <Badge
-                                  pl={3}
-                                  sx={{
-                                    margin: "auto",
-                                  }}
-                                  ff={"monospace"}
-                                  size={"sm"}
-                                >
-                                  <Center>
-                                    {tagObj?.icon !== undefined ? (
-                                      <FetchIcon
-                                        size={13}
-                                        name={tagObj.icon}
-                                        style={{
-                                          marginRight: 5,
-                                          marginLeft: 5,
-                                        }}
-                                      />
-                                    ) : undefined}
-
-                                    {tagObj?.title}
-                                  </Center>
-                                </Badge>
-                              </Paper>
-                            );
-                          }
-                        })}
+              // if (md.public) {
+              return (
+                <Paper
+                  shadow="xs"
+                  p="md"
+                  radius={"lg"}
+                  withBorder
+                  key={md._id.toString()}
+                  style={{ marginBottom: 10 }}
+                >
+                  <Stack spacing={0}>
+                    <Link
+                      href={`/datasets/${md._id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <Group spacing={"xs"} sx={{ width: "100%" }}>
+                        <FetchIcon
+                          name={md.portal_icon}
+                          size={22}
+                          color={theme.fn.primaryColor()}
+                        ></FetchIcon>
+                        <Title order={4} sx={{ color: "CaptionText" }}>
+                          {md.title}
+                        </Title>{" "}
                       </Group>
-                      <Text>{md.summary}</Text>
-                      <div style={{ display: showDetails ? "" : "none" }}>
-                        <Divider />
-                        <Group
-                          sx={{
-                            display: "flex",
-                            alignContent: "center",
-                          }}
-                        >
-                          <Group spacing={5}>
-                            <Text
-                              ff={"monospace"}
-                              transform={"uppercase"}
-                              size={"xs"}
-                            >
-                              Last updated
-                            </Text>
-                            <IconClock size={12}></IconClock>
-                            <Text
-                              ff={"monospace"}
-                              transform={"uppercase"}
-                              size={"xs"}
-                            >
-                              {md.updated_at.split("T")[0]}
-                            </Text>
-                          </Group>
+                    </Link>
+                    <Group spacing={3}>
+                      {/* Tags List  */}
+                      {/* {(md.tags || []).map((tagID: number) => {
+                        let tagObj = props.tags.filter(
+                          (x) => x.id === tagID
+                        )[0];
+                        if (tagObj !== undefined) {
+                          return (
+                            <Paper key={tagID.toString()}>
+                              <Badge
+                                pl={3}
+                                sx={{
+                                  margin: "auto",
+                                }}
+                                ff={"monospace"}
+                                size={"sm"}
+                              >
+                                <Center>
+                                  {tagObj?.icon !== undefined ? (
+                                    <FetchIcon
+                                      size={13}
+                                      name={tagObj.icon}
+                                      style={{
+                                        marginRight: 5,
+                                        marginLeft: 5,
+                                      }}
+                                    />
+                                  ) : undefined}
+
+                                  {tagObj?.title}
+                                </Center>
+                              </Badge>
+                            </Paper>
+                          );
+                        }
+                      })} */}
+                    </Group>
+                    <Text>{md.summary}</Text>
+                    <div style={{ display: showDetails ? "" : "none" }}>
+                      <Divider />
+                      <Group
+                        sx={{
+                          display: "flex",
+                          alignContent: "center",
+                        }}
+                      >
+                        <Group spacing={5}>
+                          <Text
+                            ff={"monospace"}
+                            transform={"uppercase"}
+                            size={"xs"}
+                          >
+                            Last updated
+                          </Text>
+                          <IconClock size={12}></IconClock>
+                          <Text
+                            ff={"monospace"}
+                            transform={"uppercase"}
+                            size={"xs"}
+                          >
+                            {md.updated_at.split("T")[0]}
+                          </Text>
                         </Group>
-                      </div>
-                    </Stack>
-                  </Paper>
-                );
-              }
+                      </Group>
+                    </div>
+                  </Stack>
+                </Paper>
+              );
+              // }
             })}
           </Grid.Col>
         </Grid>
@@ -320,14 +320,14 @@ export async function getServerSideProps() {
   const res = await fetch(base + "/metadata");
   const metadata = await res.json();
 
-  const res2 = await fetch(base + "/tags");
-  const tags = await res2.json();
+  // const res2 = await fetch(base + "/tags");
+  // const tags = await res2.json();
 
-  const res3 = await fetch(base + "/licenses");
-  const licenses = await res3.json();
+  // const res3 = await fetch(base + "/licenses");
+  // const licenses = await res3.json();
 
   // return props
   return {
-    props: { metadata, tags, licenses },
+    props: { metadata },
   };
 }
