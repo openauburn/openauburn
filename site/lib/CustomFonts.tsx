@@ -1,7 +1,6 @@
-import { Global } from '@mantine/core';
-import localFont from '@next/font/local'
-import { Noto_Sans } from '@next/font/google';
-import { Noto_Sans_Mono } from '@next/font/google';
+import localFont from "@next/font/local";
+import { Noto_Sans } from "@next/font/google";
+import { Noto_Sans_Mono } from "@next/font/google";
 
 // Font files can be colocated inside of `pages`
 export const poppinsBold = localFont({
@@ -12,9 +11,9 @@ export const poppinsBold = localFont({
     },
   ],
   fallback: ["sans-serif"],
-  variable: '--poppins-font',
+  variable: "--poppins-font",
 });
 
-export const noto = Noto_Sans({weight: '400'})
+export const noto = Noto_Sans({ weight: "400", preload: false });
 
-export const noto_mono = Noto_Sans_Mono({weight: '400'})
+export const noto_mono = Noto_Sans_Mono({ weight: "400", preload: false });

@@ -4,34 +4,68 @@ import { getCookie, setCookie } from "cookies-next";
 import Head from "next/head";
 import {
   MantineProvider,
-  ColorScheme,
-  ColorSchemeProvider,
+  useMantineColorScheme,
   AppShell,
   useMantineTheme,
+  ColorSchemeScript,
+  createTheme,
+  virtualColor,
 } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
 import NavHeader from "@/components/appshell/NavHeader";
 import Footer from "@/components/appshell/Footer";
 import Script from "next/script";
 import { poppinsBold, noto, noto_mono } from "@/lib/CustomFonts";
+import classes from "./_app.module.css";
 
-export default function App(props: AppProps & { colorScheme: ColorScheme }) {
-  const theme = useMantineTheme();
+export default function App(props: AppProps) {
+  // const theme = useMantineTheme();
   const { Component, pageProps } = props;
-  const [colorScheme, setColorScheme] = useState<ColorScheme>(
-    props.colorScheme
-  );
 
-  const toggleColorScheme = (value?: ColorScheme) => {
-    const nextColorScheme =
-      value || (colorScheme === "dark" ? "light" : "dark");
-    setColorScheme(nextColorScheme);
-    setCookie("mantine-color-scheme", nextColorScheme, {
-      maxAge: 60 * 60 * 24 * 30,
-    });
+  const theme = createTheme({
+    colors: {
+      primary: virtualColor({
+        name: "primary",
+        dark: "orange",
+        light: "blue",
+      }),
+    },
+    primaryShade: 5,
+    fontFamily: `${noto.style.fontFamily}`,
+    fontFamilyMonospace: `${noto_mono.style.fontFamily}`,
+    headings: {
+      fontFamily: `${poppinsBold.style.fontFamily}, sans-serif`,
+      fontWeight: `800`,
+    },
+  });
+
+  // const { colorScheme } = useMantineColorScheme();
+
+  // const [colorScheme, setColorScheme] = useState<string>(props.colorScheme);
+
+  // const toggleColorScheme = (value?: string) => {
+  //   const nextColorScheme =
+  //     value || (colorScheme === "dark" ? "light" : "dark");
+  //   setColorScheme(nextColorScheme);
+  //   setCookie("mantine-color-scheme", nextColorScheme, {
+  //     maxAge: 60 * 60 * 24 * 30,
+  //   });
+  // };
+
+  // useHotkeys([["mod+J", () => toggleColorScheme()]]);
+
+  const temp = () => {
+    const theme = useMantineTheme();
+    return theme.colors.dark[8];
   };
-
-  useHotkeys([["mod+J", () => toggleColorScheme()]]);
+  const temp2 = () => {
+    const theme = useMantineTheme();
+    return theme.colors.gray[9];
+  };
+  const t2 = () => {
+    const { colorScheme } = useMantineColorScheme();
+    return colorScheme === "dark" ? temp() : temp2();
+  };
 
   return (
     <>
@@ -44,94 +78,72 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
 
-      <ColorSchemeProvider
-        colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}
-      >
-        <MantineProvider
-          theme={{
-            primaryColor: colorScheme === "dark" ? "orange" : "blue",
-
-            primaryShade: 5,
-            fontFamily: `${noto.style.fontFamily}`,
-            fontFamilyMonospace: `${noto_mono.style.fontFamily}`,
-            colorScheme: colorScheme,
-            headings: {
-              fontFamily: `${poppinsBold.style.fontFamily}, sans-serif`,
-              fontWeight: `800`,
-            },
-          }}
-          withGlobalStyles
-          withNormalizeCSS
-        >
+      <ColorSchemeScript defaultColorScheme="light">
+        <MantineProvider theme={theme}>
           <AppShell
-            styles={{
-              main: {
-                background:
-                  colorScheme === "dark"
-                    ? theme.colors.dark[8]
-                    : theme.colors.gray[0],
-              },
-            }}
-            header={<NavHeader />}
-            footer={
-              <Footer
-                data={[
-                  {
-                    title: "About",
-                    links: [
-                      {
-                        label: "Datasets",
-                        link: "/datasets",
-                      },
-                      {
-                        label: "Features",
-                        link: "/home#features",
-                      },
-                      {
-                        label: "Mission",
-                        link: "/about",
-                      },
-                    ],
-                  },
-                  {
-                    title: "Project",
-                    links: [
-                      {
-                        label: "Applications",
-                        link: "/showcase",
-                      },
-                      {
-                        label: "Contribute",
-                        link: "/contribute",
-                      },
-                      {
-                        label: "Documentation",
-                        link: "/docs",
-                      },
-                    ],
-                  },
-                  {
-                    title: "Community",
-                    links: [
-                      {
-                        label: "Discord",
-                        link: "https://discord.com/invite/pjabvqrReR",
-                      },
-                      {
-                        label: "Twitter",
-                        link: "https://twitter.com/OpenAuburn",
-                      },
-                      {
-                        label: "GitHub",
-                        link: "https://github.com/openauburn",
-                      },
-                    ],
-                  },
-                ]}
-              />
-            }
+          // className={classes.main}
+          // styles={{
+          //   main: {
+          //     background: t2(),
+          //   },
+          // }}
           >
+            <NavHeader />
+            <Footer
+              data={[
+                {
+                  title: "About",
+                  links: [
+                    {
+                      label: "Datasets",
+                      link: "/datasets",
+                    },
+                    {
+                      label: "Features",
+                      link: "/home#features",
+                    },
+                    {
+                      label: "Mission",
+                      link: "/about",
+                    },
+                  ],
+                },
+                {
+                  title: "Project",
+                  links: [
+                    {
+                      label: "Applications",
+                      link: "/showcase",
+                    },
+                    {
+                      label: "Contribute",
+                      link: "/contribute",
+                    },
+                    {
+                      label: "Documentation",
+                      link: "/docs",
+                    },
+                  ],
+                },
+                {
+                  title: "Community",
+                  links: [
+                    {
+                      label: "Discord",
+                      link: "https://discord.com/invite/pjabvqrReR",
+                    },
+                    {
+                      label: "Twitter",
+                      link: "https://twitter.com/OpenAuburn",
+                    },
+                    {
+                      label: "GitHub",
+                      link: "https://github.com/openauburn",
+                    },
+                  ],
+                },
+              ]}
+            />
             <Script
               src="https://www.googletagmanager.com/gtag/js?id=G-552477Q8JV"
               strategy="afterInteractive"
@@ -160,7 +172,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
             <Component {...pageProps} />
           </AppShell>
         </MantineProvider>
-      </ColorSchemeProvider>
+      </ColorSchemeScript>
     </>
   );
 }
@@ -169,6 +181,5 @@ App.getInitialProps = async (appContext: AppContext) => {
   const appProps = await NextApp.getInitialProps(appContext);
   return {
     ...appProps,
-    colorScheme: getCookie("mantine-color-scheme", appContext.ctx) || "dark",
   };
 };

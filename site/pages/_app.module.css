@@ -1,0 +1,7 @@
+[--mantine-color-scheme="dark"] .main {
+  background: var(--mantine-color-dark-8);
+}
+
+.main {
+  background: var(--mantine-color-gray-9);
+}
