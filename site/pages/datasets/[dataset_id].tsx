@@ -28,9 +28,9 @@ interface DatasetProps {
 
 export default function Dataset(props: DatasetProps) {
   const router = useRouter();
-  const { datasetID } = router.query;
+  const { dataset_id } = router.query;
   const dataset = props.metadata.filter(
-    (md) => md._id === Number(datasetID)
+    (md) => md._id === Number(dataset_id)
   )[0];
 
   const text = `${dataset.title} | Open Auburn`;
@@ -188,7 +188,7 @@ export default function Dataset(props: DatasetProps) {
 }
 
 export async function getServerSideProps(context: any) {
-  const { datasetID } = context.query;
+  const { dataset_id } = context.query;
   const res = await fetch(base + `/metadata`);
   const metadata = await res.json();
   return {
