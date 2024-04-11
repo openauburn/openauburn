@@ -13,7 +13,7 @@ import {
   IconBrandGithub,
   IconBrandDiscord,
 } from "@tabler/icons-react";
-import OpenAuburnLogo from "../branding/OpenAuburnLogo";
+import OpenAuburnLogo from "../../branding/OpenAuburnLogo";
 import classes from "./Footer.module.css";
 
 interface FooterLinksProps {

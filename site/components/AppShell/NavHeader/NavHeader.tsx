@@ -23,8 +23,8 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
 import Link from "next/link";
-import LightDarkButton from "./LightDarkButton";
-import OpenAuburnLogo from "../branding/OpenAuburnLogo";
+import LightDarkButton from "../LightDarkButton";
+import OpenAuburnLogo from "../../branding/OpenAuburnLogo";
 import { base } from "@/utils/api";
 import { Metadata } from "@/utils/types";
 import { useEffect, useState } from "react";
