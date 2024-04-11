@@ -124,7 +124,7 @@ const NavHeader = () => {
               </HoverCard.Target>
 
               <HoverCard.Dropdown style={{ overflow: "hidden" }}>
-                <Group justify="apart" px="md">
+                <Group justify="space-between" px="md">
                   <Text fw={500}>Datasets</Text>
                   <Anchor href="/datasets" size="xs">
                     View all
@@ -142,7 +142,7 @@ const NavHeader = () => {
                 </SimpleGrid>
 
                 <div className={classes.dropdownFooter}>
-                  <Group justify="apart">
+                  <Group justify="space-between">
                     <div>
                       <Text fw={500} size="sm">
                         Start exploring

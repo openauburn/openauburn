@@ -49,25 +49,25 @@ export default function Dataset(props: DatasetProps) {
         <Space h={"xl"} />
         <Stack>
           <Link href={"/datasets"} style={{ textDecoration: "none" }}>
-            <Group spacing={3}>
+            <Group gap={3}>
               <IconArrowNarrowLeft size={15} style={{ color: "grey" }} />
-              <Text size={13} color={"dimmed"}>
+              <Text size={"sm"} color={"dimmed"}>
                 Back to datasets
               </Text>
             </Group>
           </Link>
           <Grid>
-            <Grid.Col md={12} lg={10}>
-              <Group spacing={5}>
+            <Grid.Col span={{ md: 12, lg: 10 }}>
+              <Group gap={5}>
                 <FetchIcon name={dataset.portal_icon} size={36} />
                 <Title>{dataset.title}</Title>
               </Group>
               <Text>{dataset.summary}</Text>
             </Grid.Col>
-            <Grid.Col md={12} lg={2} sx={{ width: "100%" }}>
-              <Group spacing={5}>
+            <Grid.Col span={{ md: 12, lg: 2 }} style={{ width: "100%" }}>
+              <Group gap={5}>
                 <Button
-                  sx={{ width: "100%" }}
+                  style={{ width: "100%" }}
                   variant={"filled"}
                   onClick={() => {
                     dataset.source.map((s: string) => {
@@ -86,7 +86,7 @@ export default function Dataset(props: DatasetProps) {
                       Object.keys(dataset.api).length > 0
                     )
                   }
-                  sx={{ width: "100%" }}
+                  style={{ width: "100%" }}
                 >
                   API
                 </Button>
@@ -94,8 +94,8 @@ export default function Dataset(props: DatasetProps) {
             </Grid.Col>
           </Grid>
           <Grid>
-            <Grid.Col md={12} lg={8}></Grid.Col>
-            <Grid.Col md={12} lg={12}>
+            <Grid.Col span={{ md: 12, lg: 8 }}></Grid.Col>
+            <Grid.Col span={{ md: 12, lg: 12 }}>
               <Paper p={15} withBorder radius={"md"}>
                 <Stack>
                   <Title order={4}>Details</Title>
@@ -117,7 +117,7 @@ export default function Dataset(props: DatasetProps) {
                       >
                         <Text
                           ff={"monospace"}
-                          transform={"uppercase"}
+                          td={"uppercase"}
                           size={"sm"}
                           color={"dimmed"}
                         >
@@ -134,7 +134,7 @@ export default function Dataset(props: DatasetProps) {
           </Grid>
         </Stack>
         <Space h={"xl"} />
-        <Stack spacing={3}>
+        <Stack gap={3}>
           <Title order={3}>Related datasets</Title>
           <Grid>
             {props.metadata
@@ -147,25 +147,26 @@ export default function Dataset(props: DatasetProps) {
               .slice(0, 4)
               .map((md: Metadata) => {
                 return (
-                  <Grid.Col md={6} lg={3} key={md._id.toString()}>
+                  <Grid.Col span={{ md: 6, lg: 3 }} key={md._id.toString()}>
                     <Link
                       href={`/datasets/${md._id}`}
                       style={{ textDecoration: "none" }}
+                      passHref
+                      legacyBehavior
                     >
                       <Paper
                         withBorder
                         shadow={"md"}
                         radius={"md"}
                         p={"md"}
-                        sx={{
-                          // width: 200,
+                        style={{
                           overflow: "hidden",
                           textOverflow: "ellipsis",
                         }}
                       >
-                        <Stack spacing={"xs"}>
-                          <Group spacing={3}>
-                            <Title order={6}>{md.title}</Title>
+                        <Stack gap={"xs"}>
+                          <Group gap={3}>
+                            <Title order={5}>{md.title}</Title>
                           </Group>
                           <div>
                             {md.tags.map((tag: string) => (

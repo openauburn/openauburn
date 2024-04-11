@@ -10,10 +10,10 @@ interface CustomBadgeProps {
 
 export default function CustomBadge(props: CustomBadgeProps) {
   return (
-    <Paper key={props.id.toString()}>
+    <Paper key={props.id.toString()} shadow="none">
       <Badge
         pl={props.icon !== undefined ? 3 : "auto"}
-        sx={{
+        style={{
           margin: "auto",
         }}
         ff={"monospace"}

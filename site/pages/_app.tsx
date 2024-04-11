@@ -32,11 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <MantineProvider theme={theme}>
-        <AppShell
-          className={classes.main}
-          // footer={{ height: 200 }}
-          // layout={"alt"}
-        >
+        <AppShell className={classes.main}>
           <NavHeader />
           <AppShell.Main>
             <Component {...pageProps} />
@@ -102,12 +98,12 @@ export default function App({ Component, pageProps }: AppProps) {
           />
           <Script id="google-analytics" strategy="afterInteractive">
             {`
-                            window.dataLayer = window.dataLayer || [];
-                            function gtag(){window.dataLayer.push(arguments);}
-                            gtag('js', new Date());
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              gtag('js', new Date());
 
-                            gtag('config', 'G-552477Q8JV');
-                          `}
+              gtag('config', 'G-552477Q8JV');
+            `}
           </Script>
         </AppShell>
       </MantineProvider>
