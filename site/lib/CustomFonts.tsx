@@ -1,6 +1,6 @@
-import localFont from "@next/font/local";
-import { Noto_Sans } from "@next/font/google";
-import { Noto_Sans_Mono } from "@next/font/google";
+import localFont from "next/font/local";
+import { Noto_Sans } from "next/font/google";
+import { Noto_Sans_Mono } from "next/font/google";
 
 // Font files can be colocated inside of `pages`
 export const poppinsBold = localFont({

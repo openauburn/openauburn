@@ -1,90 +1,68 @@
-/* wrapper: {
-    position: 'relative',
-    paddingTop: 120,
-    paddingBottom: 80,
+.wrapper {
+  position: relative;
+  padding-top: rem(120px);
+  padding-bottom: rem(80px);
 
-    '@media (max-width: 755px)': {
-      paddingTop: 80,
-      paddingBottom: 60,
-    },
-  },
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding-top: rem(80px);
+    padding-bottom: rem(60px);
+  }
+}
 
-  inner: {
-    position: 'relative',
-    zIndex: 1,
-  },
+.inner {
+  position: relative;
+  z-index: 1;
+}
 
-  dots: {
-    position: 'absolute',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
-  },
+.title {
+  text-align: center;
+  font-weight: 500;
+  font-size: rem(60px);
+  letter-spacing: -1px;
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  margin-bottom: var(--mantine-spacing-xs);
 
-  dotsRight: {
-    position: 'absolute',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
+  @media (max-width: $mantine-breakpoint-xs) {
+    font-size: rem(28px);
+    text-align: left;
+  }
+}
 
-    '@media (max-width: 520px)': {
-      display: 'none'
-    },
-  },
+.highlight {
+  color: light-dark(var(--mantine-color-blue-6), var(--mantine-color-blue-4));
+}
 
-  title: {
-    textAlign: 'center',
-    fontWeight: 800,
-    fontSize: 65,
-    letterSpacing: -1,
-    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-    marginBottom: theme.spacing.xs,
+.description {
+  text-align: center;
 
-    '@media (max-width: 520px)': {
-      fontSize: 40,
-      textAlign: 'left',
-    },
-  },
+  @media (max-width: $mantine-breakpoint-xs) {
+    text-align: left;
+    font-size: var(--mantine-font-size-md);
+  }
+}
 
-  highlight: {
-    //color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 4 : 4],
-    color: theme.colors[theme.primaryColor][parseInt(theme.primaryShade.toString())],
-  },
+.controls {
+  margin-top: var(--mantine-spacing-lg);
+  display: flex;
+  justify-content: center;
 
-  description: {
-    textAlign: 'center',
-    fontSize: theme.fontSizes.lg,
+  @media (max-width: $mantine-breakpoint-xs) {
+    flex-direction: column;
+  }
+}
 
-    '@media (max-width: 520px)': {
-      textAlign: 'left',
-      fontSize: theme.fontSizes.md,
-    },
-  },
+.control {
+  &:not(:first-of-type) {
+    margin-left: var(--mantine-spacing-md);
+  }
 
-  controls: {
-    marginTop: theme.spacing.lg,
-    display: 'flex',
-    justifyContent: 'center',
+  @media (max-width: $mantine-breakpoint-xs) {
+    height: rem(42px);
+    font-size: var(--mantine-font-size-md);
 
-    '@media (max-width: 520px)': {
-      flexDirection: 'column',
-    },
-  },
-
-  control: {
-    '&:not(:first-of-type)': {
-      marginLeft: theme.spacing.md,
-    },
-
-    '@media (max-width: 520px)': {
-      height: 42,
-      fontSize: theme.fontSizes.md,
-
-      '&:not(:first-of-type)': {
-        marginTop: theme.spacing.md,
-        marginLeft: 0,
-      },
-    },
-  },
-
-  break: {
-    '@media (max-width: 580px)': {
-      display: 'none',
-    },
-  } */
+    &:not(:first-of-type) {
+      margin-top: var(--mantine-spacing-md);
+      margin-left: 0;
+    }
+  }
+}

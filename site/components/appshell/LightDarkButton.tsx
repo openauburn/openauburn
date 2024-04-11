@@ -1,8 +1,13 @@
-import { useMantineColorScheme, ActionIcon, Group } from '@mantine/core';
-import { IconSun, IconMoonStars } from '@tabler/icons-react';
-
+import {
+  useMantineColorScheme,
+  ActionIcon,
+  Group,
+  useMantineTheme,
+} from "@mantine/core";
+import { IconSun, IconMoonStars } from "@tabler/icons-react";
 
 const LightDarkButton = () => {
+  const theme = useMantineTheme();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   return (
@@ -10,16 +15,25 @@ const LightDarkButton = () => {
       <ActionIcon
         onClick={() => toggleColorScheme()}
         size="lg"
-        sx={(theme) => ({
+        style={{
           backgroundColor:
-            theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-            color: theme.colorScheme === 'dark' ? theme.colors.orange[4] : theme.colors.blue[6],
-        })}
+            colorScheme === "dark"
+              ? theme.colors.dark[6]
+              : theme.colors.gray[0],
+          color:
+            colorScheme === "dark"
+              ? theme.colors.orange[4]
+              : theme.colors.blue[6],
+        }}
       >
-        {colorScheme === 'dark' ? <IconSun size={18} /> : <IconMoonStars size={18} />}
+        {colorScheme === "dark" ? (
+          <IconSun size={18} />
+        ) : (
+          <IconMoonStars size={18} />
+        )}
       </ActionIcon>
     </Group>
   );
-}
+};
 
-export default LightDarkButton
+export default LightDarkButton;

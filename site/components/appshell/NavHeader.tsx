@@ -18,6 +18,7 @@ import {
   ActionIcon,
   useMantineTheme,
   useMantineColorScheme,
+  getThemeColor,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
@@ -68,7 +69,7 @@ const NavHeader = () => {
             <FetchIcon
               name={item.portal_icon}
               size={22}
-              color={theme.primaryColor}
+              color={getThemeColor(theme.primaryColor, theme)}
             ></FetchIcon>
           </ThemeIcon>
           <div>
@@ -87,7 +88,7 @@ const NavHeader = () => {
   return (
     <Box>
       <AppShell.Header style={{ height: 60 }} px="md">
-        <Group justify="apart" style={{ height: "100%" }}>
+        <Group justify="space-between" style={{ height: "100%" }}>
           <UnstyledButton component="a" href="/">
             <OpenAuburnLogo />
           </UnstyledButton>
@@ -114,7 +115,10 @@ const NavHeader = () => {
                     <Box component="span" mr={5}>
                       Datasets
                     </Box>
-                    <IconChevronDown size={16} color={theme.primaryColor} />
+                    <IconChevronDown
+                      size={16}
+                      color={getThemeColor(theme.primaryColor, theme)}
+                    />
                   </Center>
                 </Link>
               </HoverCard.Target>
@@ -205,7 +209,10 @@ const NavHeader = () => {
               <Box component="span" mr={5}>
                 Datasets
               </Box>
-              <IconChevronDown size={16} color={theme.primaryColor} />
+              <IconChevronDown
+                size={16}
+                color={getThemeColor(theme.primaryColor, theme)}
+              />
             </Center>
           </UnstyledButton>
           <Collapse
@@ -234,6 +241,7 @@ const NavHeader = () => {
             justify="center"
           >
             <ActionIcon
+              variant="transparent"
               size="lg"
               component="a"
               href="https://github.com/openauburn"
@@ -243,6 +251,7 @@ const NavHeader = () => {
               <IconBrandGithub size={18} stroke={1.5} />
             </ActionIcon>
             <ActionIcon
+              variant="transparent"
               size="lg"
               component="a"
               href="https://www.linkedin.com/company/openauburn/"
@@ -252,6 +261,7 @@ const NavHeader = () => {
               <IconBrandLinkedin size={18} stroke={1.5} />
             </ActionIcon>
             <ActionIcon
+              variant="transparent"
               size="lg"
               component="a"
               href="https://discord.gg/pjabvqrReR"
@@ -261,6 +271,7 @@ const NavHeader = () => {
               <IconBrandDiscord size={18} stroke={1.5} />
             </ActionIcon>
             <ActionIcon
+              variant="transparent"
               size="lg"
               component="a"
               href="https://twitter.com/OpenAuburn"
@@ -270,6 +281,7 @@ const NavHeader = () => {
               <IconBrandTwitter size={18} stroke={1.5} />
             </ActionIcon>
             <ActionIcon
+              variant="transparent"
               size="lg"
               component="a"
               href="https://www.instagram.com/openauburn/"

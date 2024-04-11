@@ -4,7 +4,7 @@ import {
   ActionIcon,
   Group,
   UnstyledButton,
-  px,
+  AppShell,
 } from "@mantine/core";
 import {
   IconBrandTwitter,
@@ -40,7 +40,7 @@ const Footer = ({ data }: FooterLinksProps) => {
   });
 
   return (
-    <footer className={classes.footer}>
+    <div className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
           <UnstyledButton component="a" href="/">
@@ -55,11 +55,12 @@ const Footer = ({ data }: FooterLinksProps) => {
       </Container>
       <Container className={classes.afterFooter}>
         <Text color="dimmed" size="sm">
-          © 2023 Open Auburn. All rights reserved.
+          © 2024 Open Auburn. All rights reserved.
         </Text>
 
         <Group gap={0} className={classes.social} justify="right" wrap="nowrap">
           <ActionIcon
+            variant="transparent"
             size="lg"
             component="a"
             href="https://github.com/openauburn"
@@ -69,6 +70,7 @@ const Footer = ({ data }: FooterLinksProps) => {
             <IconBrandGithub size={18} stroke={1.5} />
           </ActionIcon>
           <ActionIcon
+            variant="transparent"
             size="lg"
             component="a"
             href="https://www.linkedin.com/company/openauburn/"
@@ -78,6 +80,7 @@ const Footer = ({ data }: FooterLinksProps) => {
             <IconBrandLinkedin size={18} stroke={1.5} />
           </ActionIcon>
           <ActionIcon
+            variant="transparent"
             size="lg"
             component="a"
             href="https://discord.gg/pjabvqrReR"
@@ -87,6 +90,7 @@ const Footer = ({ data }: FooterLinksProps) => {
             <IconBrandDiscord size={18} stroke={1.5} />
           </ActionIcon>
           <ActionIcon
+            variant="transparent"
             size="lg"
             component="a"
             href="https://twitter.com/OpenAuburn"
@@ -96,6 +100,7 @@ const Footer = ({ data }: FooterLinksProps) => {
             <IconBrandTwitter size={18} stroke={1.5} />
           </ActionIcon>
           <ActionIcon
+            variant="transparent"
             size="lg"
             component="a"
             href="https://www.instagram.com/openauburn/"
@@ -106,7 +111,7 @@ const Footer = ({ data }: FooterLinksProps) => {
           </ActionIcon>
         </Group>
       </Container>
-    </footer>
+    </div>
   );
 };
 

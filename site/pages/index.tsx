@@ -5,24 +5,11 @@ import classes from "./index.module.css";
 export default function Home() {
   return (
     <Container className={classes.wrapper} size={1500}>
-      <Dots className={classes.dots} style={{ left: 0, top: 0 }} />
-      <Dots className={classes.dots} style={{ left: 60, top: 0 }} />
-      <Dots className={classes.dots} style={{ left: 0, top: 140 }} />
-
-      <Dots className={classes.dotsRight} style={{ right: 0, top: 60 }} />
-      <Dots className={classes.dotsRight} style={{ right: 0, top: 140 }} />
-      <Dots className={classes.dotsRight} style={{ right: 60, top: 140 }} />
-
       <div className={classes.inner}>
         <Title className={classes.title}>
-          <Text component="span" className={classes.highlight} inherit>
-            Open
-          </Text>{" "}
-          data for a {<br className={classes.break}></br>}
-          <Text component="span" className={classes.highlight} inherit>
-            better
-          </Text>{" "}
-          Auburn.
+          <span className={classes.highlight}>Open</span> data for a{" "}
+          {<br className={classes.break}></br>}
+          <span className={classes.highlight}>better</span> Auburn.
         </Title>
 
         <Container p={0} size={600}>
