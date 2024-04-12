@@ -126,7 +126,8 @@ export default function About() {
                 <a href="https://data.openauburn.org/" target="_blank">
                   https://data.openauburn.org/
                 </a>
-                and documenation for it can be found <a href="/docs">here</a>.
+                and documenation for it can be found{" "}
+                <Link href="/docs">here</Link>.
               </Text>
               <Space h={"md"} />
               <Title order={4}>
