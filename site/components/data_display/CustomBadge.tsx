@@ -3,17 +3,17 @@ import React from "react";
 import FetchIcon from "../FetchIcon";
 
 interface CustomBadgeProps {
-  icon: string;
+  icon?: string;
   id: any;
   title: string;
 }
 
 export default function CustomBadge(props: CustomBadgeProps) {
   return (
-    <Paper key={props.id.toString()}>
+    <Paper key={props.id.toString()} shadow="none">
       <Badge
-        pl={3}
-        sx={{
+        pl={props.icon !== undefined ? 3 : "auto"}
+        style={{
           margin: "auto",
         }}
         ff={"monospace"}
