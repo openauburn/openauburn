@@ -53,11 +53,7 @@ const NavHeader = () => {
   }, []);
 
   useEffect(() => {
-    setLinks(getLinks(metadata));
-  }, [metadata, theme]);
-
-  function getLinks(metadata: Array<Metadata>) {
-    return metadata.map((item) => (
+    let link_components = metadata.map((item) => (
       <UnstyledButton
         className={classes.subLink}
         key={Date.now() + Math.random()}
@@ -83,7 +79,8 @@ const NavHeader = () => {
         </Group>
       </UnstyledButton>
     ));
-  }
+    setLinks(link_components);
+  }, [metadata, theme]);
 
   return (
     <Box>
