@@ -1,5 +1,4 @@
 import { Title, Text, Button, Container } from "@mantine/core";
-import Dots from "./Dots";
 import classes from "./index.module.css";
 
 export default function Home() {
