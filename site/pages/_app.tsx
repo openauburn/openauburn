@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <MantineProvider theme={theme}>
         <AppShell className={classes.main}>
           <NavHeader />
-          <AppShell.Main>
+          <AppShell.Main style={{ paddingTop: 50 }}>
             <Component {...pageProps} />
           </AppShell.Main>
           <Footer
