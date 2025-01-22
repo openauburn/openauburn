@@ -55,7 +55,7 @@ const Footer = ({ data }: FooterLinksProps) => {
       </Container>
       <Container className={classes.afterFooter}>
         <Text color="dimmed" size="sm">
-          © 2024 Open Auburn. All rights reserved.
+          © 2025 Open Auburn. All rights reserved.
         </Text>
 
         <Group gap={0} className={classes.social} justify="right" wrap="nowrap">
@@ -89,7 +89,7 @@ const Footer = ({ data }: FooterLinksProps) => {
           >
             <IconBrandDiscord size={18} stroke={1.5} />
           </ActionIcon>
-          <ActionIcon
+          {/* <ActionIcon
             variant="transparent"
             size="lg"
             component="a"
@@ -108,7 +108,7 @@ const Footer = ({ data }: FooterLinksProps) => {
             rel="noopener noreferrer"
           >
             <IconBrandInstagram size={18} stroke={1.5} />
-          </ActionIcon>
+          </ActionIcon> */}
         </Group>
       </Container>
     </div>

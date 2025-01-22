@@ -34,7 +34,7 @@ export default function Showcase() {
             <Grid.Col>
               <Title order={3}>Data</Title>
               Whether it's data you found on a website or a CSV, please join the
-              Discord and share your findings! Alternatively, send an email or
+              Discord and share your findings. Alternatively, send an email or
               message a maintainer via any platform. We'll be happy to process
               it and host it.
             </Grid.Col>
@@ -45,11 +45,11 @@ export default function Showcase() {
             </Grid.Col>
             <Grid.Col>
               <Title order={3}>A project</Title>
-              It's awesome that you applied the data! Share it in the Discord or
+              It's awesome that you applied the data. Share it in the Discord or
               message a maintainer, and after review we'll share at{" "}
               <Link href="/showcase">showcase</Link>.
             </Grid.Col>
-            <Grid.Col>
+            {/* <Grid.Col>
               <Title order={3}>A donation</Title>
               Open Auburn is grateful for any financial donations! Server and
               operational costs are currently paid for out of pocket, and
@@ -57,7 +57,7 @@ export default function Showcase() {
               platform acquires more data, users, and features. You can find
               donation information at the{" "}
               <a href="https://ko-fi.com/mattrog">Ko-fi</a>.
-            </Grid.Col>
+            </Grid.Col> */}
             <Grid.Col>
               <Title order={3}>Something else</Title>
               Join the Discord, open an issue or start a discussion on GitHub,

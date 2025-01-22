@@ -11,7 +11,6 @@ import { CodeHighlight } from "@mantine/code-highlight";
 import React from "react";
 
 import _ from "lodash";
-import Link from "next/link";
 
 export default function Documentation() {
   const theme = useMantineTheme();
@@ -62,10 +61,10 @@ export default function Documentation() {
               <Title order={4}>Datasets</Title>
               Datasets are reachable at /datasets/[dataset], where the dataset
               name is as featured on the portal, just lowercase and joined by
-              underscores. For example the dataset "Courses Spring 2025" is
-              reachable at /datasets/courses_spring_2025/. Individual data
-              points can be selected by calling /datasets/[dataset]/[_id], where
-              _id is a number reflecting the '_id' field on the target record.
+              underscores. For example the dataset "Crime Log" is reachable at
+              /datasets/crime_log/. Individual data points can be selected by
+              calling /datasets/[dataset]/[_id], where _id is a number
+              reflecting the '_id' field on the target record.
               <Space h={"md"} />
               <Title order={4}>Metadata</Title>
               Metadata for datasets is reachable at / or /metadata. Individual
@@ -77,8 +76,9 @@ export default function Documentation() {
               This section covers everything following the '?' in your request.
               <Space h={"md"} />
               <Title order={4}>Reserved keys</Title>
-              Keys beginning with a '_' provide special functionality, while
-              every other key will be treated as a field name for filtering.
+              The following keys provide special functionality, while every
+              other key will be treated as a field name for filtering: show,
+              page, page_size, sort.
               <Space h={"md"} />
               <Title order={4}>Filtering</Title>
               You can filter by one or more values. You can accomplish this by
@@ -92,8 +92,8 @@ export default function Documentation() {
                   equals value1 or value2
                 </List.Item>
                 <List.Item>
-                  ?field1=[value1,value2] -- Returns all data where field1
-                  equals value1 or value2
+                  ?field1=value1,value2 -- Returns all data where field1 equals
+                  value1 or value2
                 </List.Item>
               </List>
               <Space h={"md"} />
@@ -102,9 +102,9 @@ export default function Documentation() {
                 You can select page size and the page offset that is returned.
                 Follow the form:
                 <br />
-                ?_page=integer -- Determines page number/offset
+                ?page=integer -- Determines page number/offset
                 <br />
-                ?_page_size=integer
+                ?page_size=integer
               </Text>
               <Space h={"md"} />
               <Title order={4}>Sorting</Title>
@@ -112,22 +112,21 @@ export default function Documentation() {
                 You can sort data by any field, ascending or descending. Follow
                 the form:
                 <br />
-                ?_sort=[field_name,asc] -- Sorts data on field_name, ascending.
+                ?sort=field_name,asc -- Sorts data on field_name, ascending.
                 <br />
-                ?_sort=[field_name,desc] -- Sorts data on field_name,
-                descending.
+                ?sort=field_name,desc -- Sorts data on field_name, descending.
               </Text>
               <Space h={"md"} />
               <Title order={4}>Field Selection</Title>
               <Text>
                 You can show or hide certain fields. It is not reccommended to
-                use both '_show' and '_hide' together.
+                use both 'show' and 'hide' together.
                 <br />
-                ?_show=[field1,field2] -- Every record in the response only
+                ?show=field1,field2 -- Every record in the response only
                 contains fields field1 and field2.
                 <br />
-                ?_hide=[field_name,desc] -- Every record in the response
-                contains all fields except fields field1 and field2. descending.
+                ?hide=field1,field2 -- Every record in the response contains all
+                fields except fields field1 and field2.
               </Text>
             </Grid.Col>
           </Grid>

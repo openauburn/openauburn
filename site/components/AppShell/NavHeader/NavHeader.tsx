@@ -267,7 +267,7 @@ const NavHeader = () => {
             >
               <IconBrandDiscord size={18} stroke={1.5} />
             </ActionIcon>
-            <ActionIcon
+            {/* <ActionIcon
               variant="transparent"
               size="lg"
               component="a"
@@ -286,7 +286,7 @@ const NavHeader = () => {
               rel="noopener noreferrer"
             >
               <IconBrandInstagram size={18} stroke={1.5} />
-            </ActionIcon>
+            </ActionIcon> */}
           </Group>
 
           {/* <Group position="center" grow pb="xl" px="md">
