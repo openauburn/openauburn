@@ -5,6 +5,9 @@ export default function Home() {
   return (
     <Container className={classes.wrapper} size={1500}>
       <div className={classes.inner}>
+        {/* Circle and Hexagon Shapes */}
+        <div className={`${classes.circle} ${classes.hiddenMobile}`}></div>
+        <div className={`${classes.hexagon} ${classes.hiddenMobile}`}></div>
         <Title className={classes.title}>
           <span className={classes.highlight}>Open</span> data for a{" "}
           {<br className={classes.break}></br>}
@@ -24,19 +27,19 @@ export default function Home() {
             className={classes.control}
             size="lg"
             component="a"
-            href="/showcase"
+            href="/datasets"
           >
-            See what's possible
+            Discover the data
           </Button>
           <Button
             className={classes.control}
             size="lg"
+            component="a"
             variant="default"
             color="gray"
-            component="a"
-            href="/datasets"
+            href="/showcase"
           >
-            Discover the data
+            See what's possible
           </Button>
         </div>
       </div>

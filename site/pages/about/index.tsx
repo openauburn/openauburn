@@ -177,7 +177,7 @@ export default function About() {
             </Grid.Col>
             <Grid.Col>
               <Space h={"md"} />
-              <Title order={2}>Team</Title>
+              <Title order={2}>Development</Title>
               <Space h={"md"} />
               <Text>
                 Open Auburn is maintained by{" "}
@@ -185,8 +185,8 @@ export default function About() {
                   Matthew Rogers
                 </a>
                 . The project looks to expand both its data and operational
-                capabilities. If you have made something cool with Auburn data
-                or want to contribute to the project directly, please review the{" "}
+                capabilities. If you have an impact with Auburn data or want to
+                contribute to the project directly, please review the{" "}
                 <Link href={"/contribute"}>contribution page</Link>.{" "}
               </Text>
             </Grid.Col>
