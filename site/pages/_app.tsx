@@ -30,6 +30,12 @@ export default function App({ Component, pageProps }: AppProps) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
         <link rel="shortcut icon" href="/favicon.ico" />
+        <meta property="og:title" content="Open Auburn" />
+        <meta
+          property="og:description"
+          content="Create, research, and learn using Auburn's largest public datasets."
+        />
+        <meta property="og:image" content="/static/images/og.png" />
       </Head>
 
       <MantineProvider theme={theme}>
@@ -48,11 +54,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     link: "/datasets",
                   },
                   {
-                    label: "Features",
-                    link: "/home#features",
-                  },
-                  {
-                    label: "Mission",
+                    label: "About",
                     link: "/about",
                   },
                 ],
@@ -75,7 +77,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 ],
               },
               {
-                title: "Community",
+                title: "External",
                 links: [
                   {
                     label: "Discord",

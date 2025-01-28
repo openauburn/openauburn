@@ -178,7 +178,7 @@ export default function Datasets(props: DatasetsProps) {
                   ff={"monospace"}
                   style={{ fontSize: theme.fontSizes.sm }}
                 >{`${filterDatasets.length} datasets found`}</Text>
-                <Group>
+                {/* <Group>
                   <Group gap={0}>
                     <ActionIcon
                       color={!showDetails ? theme.primaryColor : "gray"}
@@ -193,7 +193,7 @@ export default function Datasets(props: DatasetsProps) {
                       <IconSquareMinus />
                     </ActionIcon>
                   </Group>
-                </Group>
+                </Group> */}
               </Container>
             </Stack>
             {/* Datasets List */}
