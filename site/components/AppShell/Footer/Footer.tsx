@@ -55,7 +55,8 @@ const Footer = ({ data }: FooterLinksProps) => {
       </Container>
       <Container className={classes.afterFooter}>
         <Text color="dimmed" size="sm">
-          © 2025 Open Auburn. All rights reserved.
+          © 2025 Open Auburn. All rights reserved. <br />
+          Independent project. Not officially associated with Auburn University.
         </Text>
 
         <Group gap={0} className={classes.social} justify="right" wrap="nowrap">
