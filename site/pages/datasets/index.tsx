@@ -155,15 +155,7 @@ export default function Datasets(props: DatasetsProps) {
                 />
               </div>
             </Stack>
-            {/* {props.tags.map((tag: Tag) => {
-            </Stack>
-            <Stack
-              return (
-                <Text ff={"monospace"} fz={"sm"}>
-                  {tag.title}
-                </Text>
-              );
-            })} */}
+
           </Grid.Col>
           <Grid.Col span={{ md: 12, lg: 10 }}>
             <Stack w={"100%"}>
@@ -178,22 +170,6 @@ export default function Datasets(props: DatasetsProps) {
                   ff={"monospace"}
                   style={{ fontSize: theme.fontSizes.sm }}
                 >{`${filterDatasets.length} datasets found`}</Text>
-                {/* <Group>
-                  <Group gap={0}>
-                    <ActionIcon
-                      color={!showDetails ? theme.primaryColor : "gray"}
-                      onClick={() => setShowDetails(true)}
-                    >
-                      <IconSquarePlus />
-                    </ActionIcon>
-                    <ActionIcon
-                      color={showDetails ? theme.primaryColor : "gray"}
-                      onClick={() => setShowDetails(false)}
-                    >
-                      <IconSquareMinus />
-                    </ActionIcon>
-                  </Group>
-                </Group> */}
               </Container>
             </Stack>
             {/* Datasets List */}
@@ -224,41 +200,6 @@ export default function Datasets(props: DatasetsProps) {
                       </Group>
                     </Link>
                     <Group gap={3}>
-                      {/* Tags List  */}
-                      {/* {(md.tags || []).map((tagID: number) => {
-                        let tagObj = props.tags.filter(
-                          (x) => x.id === tagID
-                        )[0];
-                        if (tagObj !== undefined) {
-                          return (
-                            <Paper key={tagID.toString()}>
-                              <Badge
-                                pl={3}
-                                sx={{
-                                  margin: "auto",
-                                }}
-                                ff={"monospace"}
-                                size={"sm"}
-                              >
-                                <Center>
-                                  {tagObj?.icon !== undefined ? (
-                                    <FetchIcon
-                                      size={13}
-                                      name={tagObj.icon}
-                                      style={{
-                                        marginRight: 5,
-                                        marginLeft: 5,
-                                      }}
-                                    />
-                                  ) : undefined}
-
-                                  {tagObj?.title}
-                                </Center>
-                              </Badge>
-                            </Paper>
-                          );
-                        }
-                      })} */}
                     </Group>
                     <Text>{md.summary}</Text>
                     <div style={{ display: showDetails ? "" : "none" }}>
