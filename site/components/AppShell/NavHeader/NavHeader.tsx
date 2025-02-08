@@ -221,7 +221,7 @@ const NavHeader = () => {
           <Link href="/showcase" className={classes.link}>
             Showcase
           </Link>
-          <Link href="/documentation" className={classes.link}>
+          <Link href="/docs" className={classes.link}>
             Documentation
           </Link>
           <Link href="/about" className={classes.link}>
