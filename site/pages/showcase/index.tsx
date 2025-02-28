@@ -17,6 +17,7 @@ import { base } from "@/utils/api";
 
 import _ from "lodash";
 import Null from "@/components/splash/null";
+import { useMediaQuery } from "@mantine/hooks";
 
 interface ShowcaseProps {
   showcase: Array<any>;
@@ -24,21 +25,46 @@ interface ShowcaseProps {
 
 export default function Showcase(props: ShowcaseProps) {
   const theme = useMantineTheme();
-  let showcase = props.showcase;
+  const staticShowcaseItem = {
+    _id: 0,
+    description:
+      "Comprehensive report on patterns in faculty & staff salary data.",
+    title: "Salary Statistical Analysis",
+    url: "/OpenAuburnSalaryGasser.pdf",
+    og_img: "/static/images/salary_distribution.webp",
+  };
 
-  const [ogImage, setOgImage] = useState<string | null>(null);
+  const [showcase, setShowcase] = useState(
+    [staticShowcaseItem].concat(props.showcase)
+  );
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!showcase[0].url) return;
+    const updatedShowcase = [...showcase];
 
-    fetch(`/api/ogimage?url=${encodeURIComponent(showcase[0].url)}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.ogImage) setOgImage(data.ogImage);
-      })
-      .finally(() => setLoading(false));
-  }, [showcase[0].url]);
+    for (let i = 0; i < updatedShowcase.length; i++) {
+      let project = updatedShowcase[i];
+      console.log(project);
+      if (!Object.keys(project).includes("og_img")) {
+        console.log(project);
+        fetch(`/api/ogimage?url=${encodeURIComponent(project.url)}`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.ogImage) {
+              project.og_img = data.ogImage;
+              updatedShowcase[i] = project;
+            }
+          })
+          .finally(() => {
+            setShowcase(updatedShowcase);
+            setLoading(false);
+          });
+      }
+    }
+  }, [showcase]);
+
+  const isMedScreen = useMediaQuery("(max-width: 900px)");
 
   return (
     <>
@@ -57,7 +83,7 @@ export default function Showcase(props: ShowcaseProps) {
         </div>
         <Space h={"xl"} />
         <Space h={"xl"} />
-        <SimpleGrid cols={3}>
+        <SimpleGrid cols={isMedScreen ? 1 : 3}>
           {showcase.length ? (
             showcase.map((project) => (
               <UnstyledButton
@@ -85,11 +111,18 @@ export default function Showcase(props: ShowcaseProps) {
                       <Loader />
                     </Box>
                   ) : (
-                    <Image src={ogImage} style={{ borderRadius: 10 }}></Image>
+                    <Image
+                      src={project.og_img}
+                      style={{ borderRadius: 10 }}
+                    ></Image>
                   )}
                   <Space h={"xs"} />
                   <Title order={4}>{project.title}</Title>
-                  <Text c={"dimmed"}>{project.description}</Text>
+                  {isMedScreen ? (
+                    <></>
+                  ) : (
+                    <Text c={"dimmed"}>{project.description}</Text>
+                  )}
                 </Paper>
               </UnstyledButton>
             ))
@@ -105,6 +138,7 @@ export default function Showcase(props: ShowcaseProps) {
 export async function getServerSideProps() {
   const sh_res = await fetch(base + "/showcase");
   const showcase = await sh_res.json();
+  console.log(showcase);
   return {
     props: { showcase },
   };
